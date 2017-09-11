@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/statusBarview"
+        style="@style/statusBar" />
+
+    <com.delevin.shenghuidai.view.TitleView
+        android:id="@+id/my_head_pic_titleview"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+    </com.delevin.shenghuidai.view.TitleView>
+
+    <RelativeLayout
+        android:id="@+id/my_head_pic_rl_shiming"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="实名认证"
+            android:textColor="@color/base_application_black_font"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/my_head_pic_tv_idcard_or_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="未认证"
+            android:textColor="@color/base_application_deep_grey_font"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/my_head_pic_tv_realname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2.5dp"
+            android:layout_toLeftOf="@+id/my_head_pic_tv_idcard_or_state"
+            android:text=""
+            android:textColor="@color/base_application_deep_grey_font"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/base_application_bakcground" />
+
+    <RelativeLayout
+        android:id="@+id/my_head_pic_rl_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="手机号"
+            android:textColor="@color/base_application_black_font"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/my_head_pic_tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageView2"
+            android:text=""
+            android:textColor="@color/base_application_deep_grey_font"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/base_application_bakcground" />
+
+    <RelativeLayout
+        android:id="@+id/my_bank_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:text="我的银行卡"
+            android:textColor="@color/base_application_black_font"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/my_bank_code"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/base_application_deep_grey_font"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/base_application_bakcground" />
+
+    <TextView
+        android:id="@+id/my_head_pic_rl_shouhuoAdress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:drawableRight="@drawable/img_enter_into"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="收货地址管理"
+        android:textColor="@color/base_application_black_font"
+        android:textSize="15sp" />
+
+</LinearLayout>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.yourenkeji.shenghuidai"
+    android:id="@+id/object_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="12dp"
+        android:paddingTop="25dp" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/object_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="【汽车宝3089期】"
+                android:textColor="#333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/base_application_deep_red"
+                android:text="活动加息"
+                android:gravity="center"
+                android:background="@drawable/red_border_arrow_left" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/object_gone"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/boluos_man"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_newLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:src="@drawable/boluo_limitnew"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_toRightOf="@+id/linearLayout2"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预期年化收益率"
+                android:textColor="#999"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/layout011"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/object_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/f15a4a"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="@color/f15a4a"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/object_rate_increase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/f15a4a"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout3"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_marginLeft="130dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="锁定期限"
+                android:textColor="#999"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/layout022"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/object_time_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/f15a4a"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天"
+                    android:textColor="#999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone" >
+
+            <com.delevin.shenghuidai.view.RoundProgressBar
+                android:id="@+id/object_PieCharViewBuy"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_centerHorizontal="true"
+                app:textColors="#666"
+                app:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/boluos_man"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="剩余:"
+                    android:textColor="#999"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/object_yues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/wwwwww"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/linearLayout3"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/linearLayout3"
+            android:layout_centerVertical="true"
+            android:background="@drawable/boluo_button_shadow_red_background"
+            android:gravity="center"
+            android:text="立即购买"
+            android:textColor="#fff"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/huise" />
+
+</LinearLayout>

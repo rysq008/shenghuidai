@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bt_white"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/kefu_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="23dp"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            android:text="在线客服"
+            android:textColor="@color/base_application_deep_red"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/base_application_bakcground" />
+
+        <LinearLayout
+            android:id="@+id/kefu_callphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="31dp"
+                android:layout_marginTop="30dp"
+                android:drawableLeft="@drawable/login_call"
+                android:drawablePadding="10dp"
+                android:text="400-009-8087"
+                android:textColor="@color/base_application_deep_red"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/kefu_dissmiss"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:drawableTop="@drawable/login_dialog_close"
+        android:text=""
+        android:textColor="@color/gggggg"
+        android:layout_marginBottom="50dp"
+        android:textSize="14sp" />
+
+</LinearLayout>

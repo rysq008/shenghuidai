@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res/com.yourenkeji.shenghuidai"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_application_transparent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <LinearLayout
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/boluos_shape_common_view_stroke_10"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="53dp"
+                android:gravity="center_horizontal"
+                android:text="体现规则"
+                android:textColor="@color/base_application_deep_red"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/calendar_view_syllabus_active_mark_background"
+                android:drawablePadding="10dp"
+                android:text="最低体现金额100元。"
+                android:textColor="@color/base_application_black_font"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/calendar_view_syllabus_active_mark_background"
+                android:drawablePadding="10dp"
+                android:text="充值未投资金额体现收取1%手续费。"
+                android:textColor="@color/base_application_black_font"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/calendar_view_syllabus_active_mark_background"
+                android:drawablePadding="10dp"
+                android:text="工作日提现：14：00前申请提现当日到账;14：00后申请提现次日到账（星期五除外）。"
+                android:textColor="@color/base_application_black_font"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/calendar_view_syllabus_active_mark_background"
+                android:drawablePadding="10dp"
+                android:text="周末提现:目前支持中国银行、工商银行、建设银行、农业银行、招商银行。提现到帐时间与工作日提现一致。其他银行周末申请提现将顺延在下一个工作日到账。"
+                android:textColor="@color/base_application_black_font"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/calendar_view_syllabus_unactive_mark_grey_background"
+                android:drawablePadding="10dp"
+                android:text="注：根据收款银行的不同，实现到账需要根据银行的入账时间为准。"
+                android:textColor="@color/base_application_lite_grey_font"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/tixian_dialog_close_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/withdraw_close" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/withdraw_title" />
+    </RelativeLayout>
+
+</RelativeLayout>

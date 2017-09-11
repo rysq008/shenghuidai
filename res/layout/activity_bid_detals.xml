@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.delevin.shenghuidai.view.PullUpToLoadMore
+        android:id="@+id/pullup_loadmore_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <com.delevin.shenghuidai.view.MyScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/huise"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View style="@style/statusBar" />
+
+                <com.delevin.shenghuidai.view.TitleView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" >
+                </com.delevin.shenghuidai.view.TitleView>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/boluo_bid_detail_title_layout_background"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical" >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:orientation="vertical" >
+
+                                <TextView
+                                    android:id="@+id/bid_detalsnianhuaNum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="-"
+                                    android:textColor="@color/white"
+                                    android:textSize="40sp" />
+
+                                <TextView
+                                    android:id="@+id/bid_detalsnianhuaNumTopRight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="50dp"
+                                    android:layout_toRightOf="@+id/bid_detalsnianhuaNum"
+                                    android:background="@drawable/white_border_arrow_right"
+                                    android:gravity="center"
+                                    android:text="-"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/bid_detalsnianhua"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="5dp"
+                                android:text="预期利率(%)"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="20dp"
+                                android:orientation="horizontal" >
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical" >
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="借款期限(天)"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:id="@+id/bid_detals_limitDay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:text="-"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical" >
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="起投金额(元)"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+
+                                    <TextView
+                                        android:id="@+id/bid_detals_startMoney"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:text="-"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" >
+
+                                <TextView
+                                    android:id="@+id/bid_detals_progressTV"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                                <ProgressBar
+                                    android:id="@+id/bid_detals_progress"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginRight="15dp"
+                                    android:max="100"
+                                    android:progressDrawable="@drawable/item_object_progrerss" />
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="20dp"
+                                android:layout_marginTop="0dp" >
+
+                                <TextView
+                                    android:id="@+id/textView1"
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginRight="2dp"
+                                    android:background="@color/boluo_Yellow" />
+
+                                <TextView
+                                    android:id="@+id/textView2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_toRightOf="@+id/textView1"
+                                    android:text="融资金额(元)"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/bid_detals_totalMoney"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_toRightOf="@+id/textView2"
+                                    android:text="***"
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginRight="2dp"
+                                    android:layout_toLeftOf="@+id/textView3"
+                                    android:background="@color/boluo_Yellow" />
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginRight="2dp"
+                                    android:layout_toLeftOf="@+id/bid_detals_remain_Money"
+                                    android:text="剩余可投(元)"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/bid_detals_remain_Money"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginRight="15dp"
+                                    android:text="***"
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp" />
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:paddingLeft="14dp"
+                            android:paddingRight="14dp"
+                            android:visibility="visible" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="43dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:text="项目类型：" />
+
+                                <TextView
+                                    android:id="@+id/bid_detals_project_type"
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:layout_marginLeft="14dp"
+                                    android:text="" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/base_application_bakcground" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="43dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:text="起息时间：" />
+
+                                <TextView
+                                    android:id="@+id/bid_detals_start_time"
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:layout_marginLeft="14dp"
+                                    android:text="" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/base_application_bakcground" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="43dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:text="回款时间：" />
+
+                                <TextView
+                                    android:id="@+id/bid_detals_money_time"
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:layout_marginLeft="14dp"
+                                    android:text="到款后次日回款" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/base_application_bakcground" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="43dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:text="回款方式：" />
+
+                                <TextView
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:layout_marginLeft="14dp"
+                                    android:text="到期还本付息" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/base_application_bakcground" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="43dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:text="投资限额：" />
+
+                                <TextView
+                                    android:id="@+id/bid_detals_limit_totals"
+                                    style="@style/bidDetailsTextItemStyle"
+                                    android:layout_marginLeft="14dp"
+                                    android:text="---" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="74dp"
+                            android:layout_marginBottom="42dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="gone" >
+
+                            <TextView
+                                style="@style/bidDetailsBottomTipsStyle"
+                                android:drawableTop="@drawable/detail_safe"
+                                android:text="安全保障" />
+
+                            <TextView
+                                style="@style/bidDetailsBottomTipsStyle"
+                                android:drawableTop="@drawable/detail_repayment"
+                                android:text="到期还本息" />
+
+                            <TextView
+                                android:id="@+id/bid_detals_limit_total"
+                                style="@style/bidDetailsBottomTipsStyle"
+                                android:drawableTop="@drawable/detail_limit"
+                                android:text="限额(元)*" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="10dp"
+                            android:drawableLeft="@drawable/detail_pushup_icon"
+                            android:drawablePadding="5dp"
+                            android:text="上拉查看图文详情"
+                            android:textColor="@color/base_application_deep_grey_font"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/bid_detals_bt_none"
+                        style="@style/shape_bt_gray"
+                        android:layout_gravity="bottom"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/bid_newer_tag_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:background="@drawable/detail_def_icon"
+                        android:gravity="center"
+                        android:text="仅限一次"
+                        android:textColor="@color/base_application_deep_red"
+                        android:textSize="11sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/bid_visibility_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4b000000"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <ImageView
+                            android:id="@+id/bid_visibility_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/jiazai" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="请稍后"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </com.delevin.shenghuidai.view.MyScrollView>
+
+        <!-- 下半部分界面布局 -->
+
+        <com.delevin.shenghuidai.view.MyScrollView
+            android:id="@+id/bottomscroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/statusBarviewWeb"
+                    style="@style/statusBar" />
+
+                <com.delevin.shenghuidai.view.TitleView
+                    android:id="@+id/bid_webview_titleview"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:visibility="gone" >
+                </com.delevin.shenghuidai.view.TitleView>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <WebView
+                        android:id="@+id/js_webview_webview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_gravity="top"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <RadioButton
+                            android:id="@+id/bid_detals_objectAll"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bid_detals_radiobutton_selector"
+                            android:button="@null"
+                            android:checked="true"
+                            android:gravity="center"
+                            android:text="项目概况"
+                            android:textColor="@color/gggggg"
+                            android:textSize="13sp" />
+
+                        <RadioButton
+                            android:id="@+id/bid_detals_objectMessage"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bid_detals_radiobutton_selector"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="投资信息"
+                            android:textColor="@color/gggggg"
+                            android:textSize="13sp" />
+
+                        <RadioButton
+                            android:id="@+id/bid_detals_objectFile"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bid_detals_radiobutton_selector"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="相关文件"
+                            android:textColor="@color/gggggg"
+                            android:textSize="13sp" />
+
+                        <RadioButton
+                            android:id="@+id/bid_detals_objecthetong"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bid_detals_radiobutton_selector"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="合同范本"
+                            android:textColor="@color/gggggg"
+                            android:textSize="13sp" />
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:id="@+id/js_webview_visibility_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="#4b000000"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="visible" >
+
+                        <ImageView
+                            android:id="@+id/js_webview_visibility_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/jiazai" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="请稍后"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </com.delevin.shenghuidai.view.MyScrollView>
+    </com.delevin.shenghuidai.view.PullUpToLoadMore>
+
+    <LinearLayout
+        android:id="@+id/bid_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <View
+            android:id="@+id/statusBarview"
+            style="@style/statusBar" />
+
+        <com.delevin.shenghuidai.view.TitleView
+            android:id="@+id/titleView_bidDetals"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+        </com.delevin.shenghuidai.view.TitleView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bid_detals_layoutbt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp" >
+
+        <Button
+            android:id="@+id/bid_detals_jisuanqi"
+            android:layout_width="22dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/icon_jisuanqi"
+            android:onClick="boluo_touzi_jisuanqi"
+            android:visibility="gone" />
+
+        <com.delevin.shenghuidai.view.ClearEditText
+            android:id="@+id/bid_detals_et_bidMoney"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_return_caleandar_view_stroke"
+            android:gravity="center_vertical"
+            android:hint="请输入投资金额"
+            android:numeric="decimal"
+            android:paddingLeft="10dp"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/bid_detals_bt_bid"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/boluo_button_shadow_red_background"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</RelativeLayout>

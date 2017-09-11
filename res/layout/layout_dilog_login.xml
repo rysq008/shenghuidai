@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cc000000"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layoutDilog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="31dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp" >
+
+        <Button
+            android:id="@+id/bt_dilog_login"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_corners_stroke_red_5dip"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="@color/boluo_Yellow"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/bt_dilog_resger"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_corners_solid_red_5dip"
+            android:gravity="center"
+            android:text="注册"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutDilog"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv_dialog_icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/login_hb_icon"
+            android:drawablePadding="10dp"
+            android:text="新手注册红包抢不断"
+            android:textColor="@color/f15a4a"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="22dp"
+            android:background="@color/gray_bg" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/statusBarview"
+        style="@style/statusBar" />
+
+    <com.delevin.shenghuidai.view.TitleView
+        android:id="@+id/titleView_gesture_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+    </com.delevin.shenghuidai.view.TitleView>
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="46dip"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/setup_gesture_code"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="right"
+            android:text="取消"
+            android:textColor="@color/gesture_cancel_text_color"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/gesture_tip_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_layout"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:gravity="center_horizontal"
+            android:text="@string/set_gesture_pattern"
+            android:textColor="@color/base_application_deep_grey_font"
+            android:textSize="16sp" />
+
+        <com.delevin.shenghuidai.gestureedit.fund.widget.LockIndicator
+            android:id="@+id/lock_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/text_tip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dip"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:textColor="@color/base_application_deep_red"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gesture_containers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gesture_tip_layout"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/gesture_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_reset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gesture_containers"
+        android:layout_marginTop="15dip"
+        android:gravity="center_horizontal"
+        android:text="@string/enter_gesture_every_time"
+        android:textColor="@color/base_application_deep_grey_font"
+        android:textSize="14sp" />
+
+</LinearLayout>

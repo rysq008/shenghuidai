@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <View
+            android:id="@+id/statusBarview"
+            style="@style/statusBar" />
+
+        <com.delevin.shenghuidai.view.TitleView
+            android:id="@+id/titleView_pay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+        </com.delevin.shenghuidai.view.TitleView>
+
+       <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="18dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="30dp" >
+
+    
+
+    <EditText
+        android:id="@+id/pay_Name"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/boluos_shape_common_view_stroke_10"
+        android:gravity="center_vertical"
+        android:hint="您的真实姓名"
+        android:paddingLeft="20dp"
+        android:textColor="@color/base_application_black_font"
+        android:textColorHint="@color/base_application_deep_red"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/pay_idCode"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/boluos_shape_common_view_stroke_10"
+        android:gravity="center_vertical"
+        android:hint="您的身份证号"
+        android:paddingLeft="20dp"
+        android:textColor="@color/base_application_black_font"
+        android:textColorHint="@color/base_application_deep_red"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/pay_bankCode"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/boluos_shape_common_view_stroke_10"
+        android:gravity="center_vertical"
+        android:layout_marginTop="40dp"
+        android:hint="输入银行卡"
+        android:paddingLeft="20dp"
+        android:textColor="@color/base_application_black_font"
+        android:textColorHint="@color/base_application_deep_red"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/pay_phone"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/boluos_shape_common_view_stroke_10"
+        android:gravity="center_vertical"
+        android:hint="银行预留手机号"
+        android:paddingLeft="20dp"
+        android:textColor="@color/base_application_black_font"
+        android:textColorHint="@color/base_application_deep_red"
+        android:textSize="16sp" />
+
+</LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_application_bakcground"
+            android:gravity="top"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="请绑定您本人的银行卡并输入姓名、身份证号码进行验证。"
+            android:textColor="@color/base_application_deep_grey_font"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/base_application_bakcground" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="金额"
+                android:textColor="@color/base_application_black_font"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/pay_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="26dp"
+                android:text="元"
+                android:textColor="@color/base_application_black_font"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/pay_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignWithParentIfMissing="true"
+                android:layout_toLeftOf="@+id/pay_unit"
+                android:text="-"
+                android:textColor="@color/base_application_black_font"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="36dp"
+                android:background="@color/base_application_bakcground"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/bt_pay"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/boluo_button_shadow_red_background"
+                android:text="下一步"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pay_lin_later"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#4b000000"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/pay_img_later"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jiazai" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center_horizontal"
+            android:text="请稍后"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</FrameLayout>

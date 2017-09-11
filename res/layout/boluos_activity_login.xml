@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/statusBarview"
+        style="@style/statusBar" />
+
+    <com.delevin.shenghuidai.view.TitleView
+        android:id="@+id/titleView_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+    </com.delevin.shenghuidai.view.TitleView>
+
+    <TextView
+        android:id="@+id/login_phone_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:text="手机号：123****1234"
+        android:textColor="@color/base_application_lite_grey_font"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/boluos_shape_common_view_stroke"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp" >
+
+            <EditText
+                android:id="@+id/login_phoneCode"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@drawable/boluo_login_verification"
+                android:drawablePadding="10dp"
+                android:hint="请输入手机验证码"
+                android:inputType="phone"
+                android:textColorHint="@color/base_application_lite_grey_font"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/huise" />
+
+            <Button
+                android:id="@+id/login_obtCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="获取验证码"
+                android:textColor="@color/boluo_Yellow"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/huise" />
+
+        <EditText
+            android:id="@+id/login_set_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/boluo_login_lock"
+            android:drawablePadding="10dp"
+            android:hint="请输入登录密码"
+            android:password="true"
+            android:textColorHint="@color/base_application_lite_grey_font"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/huise" />
+
+        <EditText
+            android:id="@+id/login_copy_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/boluo_login_confirm_lock"
+            android:drawablePadding="10dp"
+            android:hint="请重新输入密码"
+            android:password="true"
+            android:textColorHint="@color/base_application_lite_grey_font"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/huise" />
+
+        <EditText
+            android:id="@+id/login_copy_toPhone"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/boluo_login_referee"
+            android:drawablePadding="10dp"
+            android:hint="请输入推荐人手机号(可选填)"
+            android:password="true"
+            android:textColorHint="@color/base_application_lite_grey_font"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/login_checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/boluo_login_agree"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text=" 我已同意并阅读胜辉贷"
+            android:textColor="@color/base_application_lite_grey_font"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btnzhucexieyi"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@android:color/transparent"
+            android:text="《注册服务协议》"
+            android:textColor="@color/boluo_Yellow"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnfengxiangaozhishu"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:text="《平台声明及风险告知书》"
+        android:textColor="@color/boluo_Yellow"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/boluo_button_shadow_red_background"
+        android:layout_gravity="center_horizontal"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</LinearLayout>

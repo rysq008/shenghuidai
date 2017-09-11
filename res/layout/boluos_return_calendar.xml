@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.yourenkeji.shenghuidai"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/statusBarview"
+        style="@style/statusBar" />
+
+    <com.delevin.shenghuidai.view.TitleView
+        android:id="@+id/titleView_listview_jiazai"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/calendar_refresh_layout"
+        style="@style/refresh_layout_style" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:scrollbars="none" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/boluos_title_jiesuo_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/f15a4a"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="20dp"
+                    android:text="本月项目解锁/开放0.00元"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/boluos_title_huikuan_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_below="@+id/boluos_title_jiesuo_tv"
+                    android:background="@color/f15a4a"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="10dp"
+                    android:text="本月项目回款0.00元"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="80dp"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_return_caleandar_view_stroke"
+                        android:orientation="vertical"
+                        android:visibility="visible" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:paddingLeft="30dp"
+                            android:paddingRight="25dp"
+                            android:visibility="gone" >
+
+                            <LinearLayout
+                                android:id="@+id/signin_num_layout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="37dp"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/signin_number_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="5"
+                                    android:textColor="@color/base_application_deep_red"
+                                    android:textSize="30sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="天"
+                                    android:textColor="@color/base_application_deep_red"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/signin_tip_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/signin_num_layout"
+                                android:layout_marginTop="35dp"
+                                android:text="今日未签到"
+                                android:textColor="@color/base_application_deep_grey_font"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/signin_submit_tv"
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/boluo_button_shadow_red_background"
+                                android:gravity="center"
+                                android:text="签到"
+                                android:textColor="@color/white"
+                                android:textSize="15sp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/base_application_bakcground" />
+                        </RelativeLayout>
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            layout="@layout/calendar_activity_syllabus"
+                            android:visibility="visible" />
+
+                        <com.calendar.view.MonthPager
+                            android:id="@+id/calendar_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="240dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="25dp"
+                        android:layout_marginTop="25dp"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/mark_blue_point_icon"
+                            android:drawablePadding="5dp"
+                            android:text="解锁/开放日" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:drawableLeft="@drawable/mark_red_point_icon"
+                            android:drawablePadding="5dp"
+                            android:text="回款日" />
+                    </LinearLayout>
+
+                    <com.delevin.shenghuidai.view.ListView.XListView
+                        android:id="@+id/boluo_calendar_income_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@null"
+                        android:dividerHeight="0dp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </com.cjj.MaterialRefreshLayout>
+
+</LinearLayout>

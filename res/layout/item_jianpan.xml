@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:background="#fff" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" >
+
+            <TextView
+                android:id="@+id/item_get_jiaoyipassword_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="#333"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#eeeeee" />
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/item_get_jiaoyipassword_rl_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp" >
+
+            <TextView
+                android:id="@+id/item_get_jiaoyipassword_tv_states"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="投资金额："
+                android:textColor="#333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/item_get_jiaoyipassword_tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/item_get_jiaoyipassword_tv_states"
+                android:text="10000.00"
+                android:textColor="@color/base_application_deep_red"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/item_get_jiaoyipassword_tv_money"
+                android:text="元"
+                android:textColor="#333"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <com.autoserve.zlsy.view.PasswordInputView
+            android:id="@+id/item_get_jiaoyipassword_passwordInputView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="6"
+            app:pivBorderColor="#cccccc"
+            app:pivBorderRadius="3dp"
+            app:pivBorderWidth="10dp"
+            app:pivPasswordColor="#cccccc"
+            app:pivPasswordLength="6"
+            app:pivPasswordWidth="10dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView1"
+                android:text="胜辉贷安全输入" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            
+            <TextView
+            android:id="@+id/item_get_jiaoyipassword_tv_wangjipassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="16dp"
+            android:textSize="12sp"
+            android:textColor="#eeeeee"
+            android:text="忘记密码？" />
+
+        <TextView
+            android:id="@+id/item_get_jiaoyipassword_tv_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="13dp"
+            android:textSize="12sp"
+            android:textColor="#333"
+            android:text="取消" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
