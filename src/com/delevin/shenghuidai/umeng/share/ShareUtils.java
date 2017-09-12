@@ -21,12 +21,15 @@ import com.umeng.socialize.utils.ShareBoardlistener;
 import com.yourenkeji.shenghuidai.R;
 
 /**
- * @author 李红涛 E-mail:
- * @version 创建时间：2017-4-6 下午1:47:00 类说明
+ * 友盟分享工具类
+ * 
+ * @author g9
+ * 
  */
 public class ShareUtils {
-	private static UMShareListener mShareListener;
-	private static ShareAction mShareAction;
+
+	private static UMShareListener	mShareListener;
+	private static ShareAction		mShareAction;
 
 	/**
 	 * initShare(Activity,分享标题，分享副标题，分享url,分享头标);
@@ -37,46 +40,25 @@ public class ShareUtils {
 			final String url, final int icon) {
 		mShareListener = new CustomShareListener<T>(activity, callBack);
 		/* 增加自定义按钮的分享面板 */
-		mShareAction = new ShareAction(activity).setDisplayList(
-				SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.QQ,
-				SHARE_MEDIA.QZONE)
-		// .addButton("umeng_sharebutton_copy", "umeng_sharebutton_copy",
-		// "umeng_socialize_copy", "umeng_socialize_copy")
-		// .addButton("umeng_sharebutton_copyurl", "umeng_sharebutton_copyurl",
-		// "umeng_socialize_copyurl", "umeng_socialize_copyurl")
+		mShareAction = new ShareAction(activity).setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE)
 				.setShareboardclickCallback(new ShareBoardlistener() {
 					@Override
-					public void onclick(SnsPlatform snsPlatform,
-							SHARE_MEDIA share_media) {
-						if (snsPlatform.mShowWord
-								.equals("umeng_sharebutton_copy")) {
-							Toast.makeText(activity, "复制文本按钮",
-									Toast.LENGTH_LONG).show();
-						} else if (snsPlatform.mShowWord
-								.equals("umeng_sharebutton_copyurl")) {
-							Toast.makeText(activity, "复制链接按钮",
-									Toast.LENGTH_LONG).show();
-
-						} else {// Defaultcontent.text +
+					public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
 							new ShareAction(activity)
 									.withTitle(title)
 									.withText(message)
 									.setPlatform(share_media)
-									.withTargetUrl(/* BeanUrl.URLZ + */url)
-									.withMedia(
-											new UMImage(activity,
-													R.drawable.share_boluo_icon))
+									.withTargetUrl(BeanUrl.URLZ + url)
+									.withMedia(new UMImage(activity, R.drawable.share_boluo_icon))
 									.setCallback(mShareListener).share();
-						}
 					}
 				});
 	}
 
 	private static class CustomShareListener<T> implements UMShareListener {
 
-		// private WeakReference<ShareActivity> mActivity;
-		private WeakReference<T> mActivity;
-		private ShareCallBack callBack;
+		private WeakReference<T>	mActivity;
+		private ShareCallBack		callBack;
 
 		private CustomShareListener(Activity activity, ShareCallBack callBack) {
 			WeakReference<T> mActivity = new WeakReference(activity);
@@ -88,8 +70,7 @@ public class ShareUtils {
 		public void onResult(SHARE_MEDIA platform) {
 
 			if (platform.name().equals("WEIXIN_FAVORITE")) {
-				Toast.makeText((Context) mActivity.get(), platform + " 收藏成功啦",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText((Context) mActivity.get(), platform + " 收藏成功啦", Toast.LENGTH_SHORT).show();
 			} else {
 				if (platform != SHARE_MEDIA.MORE && platform != SHARE_MEDIA.SMS
 						&& platform != SHARE_MEDIA.EMAIL
@@ -105,8 +86,7 @@ public class ShareUtils {
 						&& platform != SHARE_MEDIA.EVERNOTE) {
 					callBack.onrespone();
 
-					Toast.makeText((Context) mActivity.get(),
-							platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+					Toast.makeText((Context) mActivity.get(), platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
 				}
 
 			}
@@ -126,8 +106,7 @@ public class ShareUtils {
 					&& platform != SHARE_MEDIA.GOOGLEPLUS
 					&& platform != SHARE_MEDIA.YNOTE
 					&& platform != SHARE_MEDIA.EVERNOTE) {
-				Toast.makeText((Context) mActivity.get(), platform + " 分享失败啦",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText((Context) mActivity.get(), platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
 				if (t != null) {
 					Log.d("throw", "throw:" + t.getMessage());
 				}
@@ -138,16 +117,14 @@ public class ShareUtils {
 		@Override
 		public void onCancel(SHARE_MEDIA platform) {
 
-			Toast.makeText((Context) mActivity.get(), platform + " 分享取消了",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText((Context) mActivity.get(), platform + " 分享取消了", Toast.LENGTH_SHORT).show();
 		}
 	}
 
 	// 分享Activity 回掉调用
 	public static void getShareOnActivityResult(Activity activity,
 			int requestCode, int resultCode, Intent data) {
-		UMShareAPI.get(activity)
-				.onActivityResult(requestCode, resultCode, data);
+		UMShareAPI.get(activity).onActivityResult(requestCode, resultCode, data);
 	}
 
 	/**

@@ -13,10 +13,17 @@
         android:layout_height="0dp"
         android:layout_weight="1" >
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/boluos_viewpager_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:visibility="gone" >
 
             <fragment
                 android:id="@+id/boluos_fragment_home"
@@ -52,8 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:visibility="visible"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:visibility="visible" >
 
             <include
                 android:id="@+id/my_nones"
@@ -67,6 +74,7 @@
         android:background="#fbfbfb" />
 
     <RadioGroup
+        android:id="@+id/boluos_rg_home"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#fff"

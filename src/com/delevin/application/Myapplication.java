@@ -24,6 +24,8 @@ import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 //import com.umeng.socialize.Config;
 //import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.common.QueuedWork;
 
 /**
  *     @author 李红涛  @version 创建时间：2016-12-13 下午3:46:18    类说明 
@@ -58,11 +60,15 @@ public class Myapplication extends Application {
 		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 		DEVICE_ID = tm.getDeviceId();
 		INFORMATION = Build.MODEL;
-		Config.DEBUG = true;
+
+		//开启debug模式，方便定位错误，具体错误检查方式可以查看http://dev.umeng.com/social/android/quick-integration的报错必看，正式发布，请关闭该模式
+        Config.DEBUG = true;
+        UMShareAPI.get(this);
+		Config.isJumptoAppStore = true;
+		
 		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志
 		JPushInterface.init(this); // 初始化 JPush
 
-		Config.isJumptoAppStore = true;
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction("android.intent.action.CART_BROADCAST");// 建议把它写一个公共的变量，这里方便阅读就不写了。
 
@@ -94,9 +100,8 @@ public class Myapplication extends Application {
 	}
 
 	{
-		PlatformConfig.setWeixin("wxe94d0f3253c0fa2e",
-				"0440904e1f163344948abf0e263dbb52");
-		PlatformConfig.setQQZone("1104974044", "KEYnDtIZJu58SKoiRtp");
+		PlatformConfig.setWeixin("wxe94d0f3253c0fa2e", "0440904e1f163344948abf0e263dbb52");
+		PlatformConfig.setQQZone("1106295785", "NlxPL3zXcGS4QVMe");
 	}
 
 	public static Application getInstance() {

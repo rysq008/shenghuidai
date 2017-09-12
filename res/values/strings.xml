@@ -544,7 +544,7 @@
     <string name="tixian_weitouzi">未投资金额：%s</string>
     <string name="tixian_yitouzi">未投资金额：%s</string>
     <string name="recharge_success">资金到账可能会有延迟，如果长时间未到账，请致电客服热线</string>
-    <string name="binding_card_success">恭喜您绑卡成功 欢迎使用盛辉贷进行投资理财 ，如有问题 请致电客服热线</string>
+    <string name="binding_card_success">恭喜您绑卡成功 欢迎使用胜辉贷进行投资理财 ，如有问题 请致电客服热线</string>
     <string name="withdraw_success">预计到账时间 1-3个工作日，请致电客服热线</string>
 
 </resources>

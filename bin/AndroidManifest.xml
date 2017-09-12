@@ -225,9 +225,8 @@
         <!-- 回款日历 -->
         <activity android:name="com.delevin.shenghuidai.activity.ReturnCalendarActivity" />
         <!-- 微信 -->
-
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.delevin.shenghuidai.umeng.share.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -236,10 +235,11 @@
         <receiver
             android:name="com.delevin.shenghuidai.broderecaster.ConnectionChangeReceiver"
             android:enabled="true" />
+
         <!-- 友盟分享key -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="576112d967e58ebc210016b6" >
+            android:value="59b27c2ae88bad5f56000fb8" >
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
@@ -261,7 +261,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="tencent1104974044" />
+                <data android:scheme="tencent1106295785" />
             </intent-filter>
         </activity>
         <activity
@@ -269,6 +269,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <!-- 退出相关广播 -->
         <receiver android:name="com.delevin.shenghuidai.exit.ForceOfflineReceiver" >
             <intent-filter>

@@ -79,7 +79,7 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 	private Timer mTimer;
 	private String type;
 	private String right;
-	public static final String contentshare = "菠萝迎新年活动，豪礼大富翁    活动隆重上线。iphone7、	mini4,话费，现金红包丰厚豪礼只等您来拿";
+	public static final String contentshare = "胜辉贷迎新年活动，豪礼大富翁    活动隆重上线。iphone7、	mini4,话费，现金红包丰厚豪礼只等您来拿";
 
 	@SuppressLint("InlinedApi")
 	@Override
