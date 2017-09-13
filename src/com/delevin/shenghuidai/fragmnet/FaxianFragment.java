@@ -26,7 +26,7 @@ import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.delevin.application.Myapplication;
 import com.delevin.jsandroid.JSAndroidActivity;
-import com.delevin.shenghuidai.activity.WebActivity;
+import com.delevin.shenghuidai.activity.TouziMeiTiActivity;
 import com.delevin.shenghuidai.base.adapter.MeiTiAdapter;
 import com.delevin.shenghuidai.base.fragment.BaseFragment;
 import com.delevin.shenghuidai.bean.BeanMeiTi;
@@ -73,7 +73,7 @@ public class FaxianFragment extends BaseFragment implements OnClickListener, OnI
 		img_xshb.setOnClickListener(this);
 		img_xydzp.setOnClickListener(this);
 		mListview = (XListView) view.findViewById(R.id.faxian_meiti_content_list);
-		LinearLayout layout_meiti_more = (LinearLayout) view.findViewById(R.id.faxian_meiti_more_layout);
+		RelativeLayout layout_meiti_more = (RelativeLayout) view.findViewById(R.id.faxian_meiti_more_layout);
 		RelativeLayout layoutFanli = (RelativeLayout) view.findViewById(R.id.faxian_ShareLeiji);
 		pullToRefreshView = (MaterialRefreshLayout) view.findViewById(R.id.faxian_pull);
 		pullToRefreshView.setMaterialRefreshListener(new MaterialRefreshListener() {
@@ -240,13 +240,11 @@ public class FaxianFragment extends BaseFragment implements OnClickListener, OnI
 				}
 				break;
 			case R.id.faxian_meiti_more_layout:
-				// if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				// startActivity(new Intent(getActivity(),
-				// TouziMeiTiActivity.class));
-				// } else {
-				// BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用",
-				// "确定");
-				// }
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					startActivity(new Intent(getActivity(), TouziMeiTiActivity.class));
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
 				break;
 			case R.id.yaoqinghaoyou:
 				// case R.id.open_share:

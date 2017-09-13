@@ -25,7 +25,7 @@ public class Constant {
 	public static final String INTENT_CODE_IMG_SELECTED_KEY = "img_selected";
 	public static final int INTENT_CODE_IMG_SELECTED_DEFAULT = 0;
 	public static final String INTENT_KEY_WELCOME = "welcome_message";
-	public static final String DEFAULT_COSTOMER_APPKEY = "1196170512115293#boluolicai";
+	public static final String DEFAULT_COSTOMER_APPKEY = "1196170512115293#shenghuidai";
 	public static final String DEFAULT_COSTOMER_ACCOUNT = "胜辉贷客服";
 	public static final String DEFAULT_ACCOUNT_PWD = "123456";
 	public static final String DEFAULT_TENANT_ID = "41322";

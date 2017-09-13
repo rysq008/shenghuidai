@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -32,54 +33,54 @@ import com.delevin.shenghuidai.bean.BeanUrl;
 import com.delevin.shenghuidai.denglu.ZhuActivity;
 import com.delevin.shenghuidai.interfaces.ShareCallBack;
 import com.delevin.shenghuidai.main.MainActivity;
-import com.delevin.shenghuidai.umeng.share.ShareUtils;
 import com.delevin.shenghuidai.utils.AndroidUtils;
 import com.delevin.shenghuidai.utils.BoluoUtils;
 import com.delevin.shenghuidai.utils.OkhttpManger.Funck4;
 import com.delevin.shenghuidai.utils.ProessDilogs;
 import com.delevin.shenghuidai.utils.QntUtils;
+import com.delevin.shenghuidai.utils.ShareUtils;
 import com.delevin.shenghuidai.utils.StatusBarUtil;
 import com.delevin.shenghuidai.view.TitleView;
 import com.delevin.shenghuidai.view.TitleView.OnRightButtonClickListener;
-import com.pusupanshi.shenghuidai.wxapi.ShareActivity;
 import com.yourenkeji.shenghuidai.R;
+import com.yourenkeji.shenghuidai.wxapi.ShareActivity;
 
 import de.greenrobot.event.EventBus;
 
 public class JSAndroidActivity extends Activity implements OnClickListener {
 
-	private WebView mWebView = null;
-	private String memberId;
-	private String phone;
-	private TitleView tvTitle;
-	private LinearLayout layout;
-	private ImageView imageView;
-	private long TIME_OUT = 5000;
-	public static final int MSG_PAGE_TIMEOUT = 11;
+	private WebView				mWebView			= null;
+	private String				memberId;
+	private String				phone;
+	private TitleView			tvTitle;
+	private LinearLayout		layout;
+	private ImageView			imageView;
+	private long				TIME_OUT			= 5000;
+	public static final int		MSG_PAGE_TIMEOUT	= 11;
 	@SuppressLint("HandlerLeak")
-	Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			// mWebView !=
-			// null&&mWebView.getProgress()<100&&mWebView.getContentHeight()
-			case MSG_PAGE_TIMEOUT:
-				// 这里对已经显示出页面且加载超时的情况不做处理
-				if (mWebView != null && mWebView.getProgress() < 100)
-					if (TextUtils.isEmpty(getIntent().getStringExtra("js"))) {
+	Handler						mHandler			= new Handler() {
+														@Override
+														public void handleMessage(Message msg) {
+															switch (msg.what) {
+															// mWebView !=
+															// null&&mWebView.getProgress()<100&&mWebView.getContentHeight()
+																case MSG_PAGE_TIMEOUT:
+																	// 这里对已经显示出页面且加载超时的情况不做处理
+																	if (mWebView != null && mWebView.getProgress() < 100)
+																	if (TextUtils.isEmpty(getIntent().getStringExtra("js"))) {
 
-						mWebView.loadUrl(BeanUrl.URLZB + getIntent().getStringExtra("jsUrl"));
-					} else {
-						mWebView.loadUrl(getIntent().getStringExtra("jsUrl"));
-					}
-				break;
-			}
-		}
-	};
-	private Timer mTimer;
-	private String type;
-	private String right;
-	public static final String contentshare = "胜辉贷迎新年活动，豪礼大富翁    活动隆重上线。iphone7、	mini4,话费，现金红包丰厚豪礼只等您来拿";
+																		mWebView.loadUrl(BeanUrl.URLZB + getIntent().getStringExtra("jsUrl"));
+																	} else {
+																		mWebView.loadUrl(getIntent().getStringExtra("jsUrl"));
+																	}
+																	break;
+															}
+														}
+													};
+	private Timer				mTimer;
+	private String				type;
+	private String				right;
+	public static final String	contentshare		= "胜辉贷迎新年活动，豪礼大富翁    活动隆重上线。iphone7、	mini4,话费，现金红包丰厚豪礼只等您来拿";
 
 	@SuppressLint("InlinedApi")
 	@Override
@@ -319,14 +320,7 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 		@Override
 		public void OnRightButtonClick(View v) {
 			if (memberId != null) {
-				// String type = getIntent().getStringExtra("type");
-				// ShareUtils.initShare(JSAndroidActivity.this,
-				// "胜辉贷：安全、短期、稳健收益", contentshare,
-				// BeanUrl.SHARE_STRING+phone+"/"+type,
-				// R.drawable.icon_fenxiang);
-				// ShareUtils.getOpen();
 				if (TextUtils.equals(right, "rightQ")) {
-
 					Intent qiandao = new Intent(JSAndroidActivity.this, WebActivity.class);
 					qiandao.putExtra("jsUrl", BeanUrl.URLZ + BeanUrl.QIANDAOGUIZE_STRING);
 					qiandao.putExtra("title", "签到规则");
@@ -334,11 +328,8 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 				} else if (TextUtils.equals(right, "rightA")) {
 					String type = getIntent().getStringExtra("type");
 					ShareUtils.initShare(new ShareCallBack() {
-
 						@Override
-						public void onrespone() {
-
-						}
+						public void onrespone() {}
 					}, JSAndroidActivity.this, "胜辉贷：安全、短期、稳健收益", contentshare, BeanUrl.SHARE_STRING + phone + "/" + type, R.drawable.icon_fenxiang);
 					ShareUtils.getOpen();
 				}
@@ -359,9 +350,20 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	private String invite_code, qrcode;
+	private String	invite_code, qrcode;
 
-	public void getData() {
+	public void getData() {// 初始化分享并获取分享二维码地址
+		ShareUtils.initShare(new ShareCallBack() {
+			@Override
+			public void onrespone() {
+				Myapplication.okhttpManger.sendComplexForm(getApplicationContext(), false, BeanUrl.SHARESUCCESS_STRING + phone, null, new Funck4() {
+					@Override
+					public void onResponse(JSONObject result) {}
+				});
+			}
+		}, JSAndroidActivity.this, "胜辉贷：安全、短期、稳健收益", "来胜辉贷，轻松享受短期、安全、高收益理财产品，现在体验还可以获赠50元新手红包。", BeanUrl.YAOQINGLIANJIE_STRING + invite_code, R.drawable.logo);
+
+		//获取分享二维码地址
 		final String phone = BoluoUtils.getShareOneData(this, "phone");
 		Myapplication.okhttpManger.sendComplexForm(this, false, QntUtils.getURL(BeanUrl.yaoqingMa, phone), null, new Funck4() {
 
@@ -370,33 +372,6 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 				try {
 					invite_code = result.getString("invite_code");
 					qrcode = result.getString("qrcode");
-					AndroidUtils.getImg(getApplicationContext(), qrcode, imageView, R.drawable.boluo_center, R.drawable.boluo_fail);
-					ShareUtils.initShare(new ShareCallBack() {
-						@Override
-						public void onrespone() {
-							// Toast.makeText(getApplicationContext(),
-							// "111111",
-							// Toast.LENGTH_SHORT).show();
-							Myapplication.okhttpManger.sendComplexForm(getApplicationContext(), false,
-							/*
-							 * String.format(BeanUrl .HostUrl.
-							 * YAOQINGHAOYOU_HOST )
-							 */
-							BeanUrl.SHARESUCCESS_STRING + phone, null, new Funck4() {
-								@Override
-								public void onResponse(JSONObject result) {
-								}
-							});
-						}
-					}, JSAndroidActivity.this, "胜辉贷：安全、短期、稳健收益", "来胜辉贷，轻松享受短期、安全、高收益理财产品，现在体验还可以获赠50元新手红包。",
-					/* BeanUrl.HostUrl.YAOQINGHAOYOU_HOST */BeanUrl.YAOQINGLIANJIE_STRING + invite_code,/*
-																										 * R
-																										 * .
-																										 * drawable
-																										 * .
-																										 * share_icon
-																										 */
-							R.drawable.logo);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -409,16 +384,32 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.share_invate_btn:
-			ShareUtils.getOpen();
-			break;
-		case R.id.qrcode_invate_btn:
-			Intent intentQuyaoqinghaoyou = new Intent(this, ShareActivity.class);
-			intentQuyaoqinghaoyou.putExtra("qrcode", qrcode);
-			intentQuyaoqinghaoyou.putExtra("invite_code", invite_code);
-			startActivity(intentQuyaoqinghaoyou);
-			break;
+			case R.id.share_invate_btn:
+				ShareUtils.getOpen();
+				break;
+			case R.id.qrcode_invate_btn:
+				Intent intentQuyaoqinghaoyou = new Intent(this, ShareActivity.class);
+				intentQuyaoqinghaoyou.putExtra("qrcode", qrcode);
+				intentQuyaoqinghaoyou.putExtra("invite_code", invite_code);
+				startActivity(intentQuyaoqinghaoyou);
+				break;
 		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		/** attention to this below ,must add this **/
+		ShareUtils.getShareOnActivityResult(JSAndroidActivity.this, requestCode, resultCode, data);
+	}
+
+	/**
+	 * 屏幕横竖屏切换时避免出现window leak的问题
+	 */
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		ShareUtils.getOnConfigurationChanged();
 	}
 
 }

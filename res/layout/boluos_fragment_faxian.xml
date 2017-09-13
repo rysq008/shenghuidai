@@ -203,7 +203,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/faxian_meiti_more_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -213,16 +212,29 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp" >
 
-                    <TextView
+                    <RelativeLayout
+                        android:id="@+id/faxian_meiti_more_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="11dp"
-                        android:layout_marginTop="11dp"
-                        android:drawableLeft="@drawable/faxian_mce_icon"
-                        android:drawablePadding="12dp"
-                        android:text="媒体新闻"
-                        android:textColor="@color/wwwwww"
-                        android:textSize="15sp" />
+                        android:layout_height="37dp"
+                        android:gravity="center_vertical" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/faxian_mce_icon"
+                            android:drawablePadding="12dp"
+                            android:text="媒体新闻"
+                            android:textColor="@color/wwwwww"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="更多"
+                            android:textColor="@color/wwwwww"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"

@@ -211,7 +211,7 @@
         <activity android:name="com.delevin.shenghuidai.activity.BidBuyActivity" />
         <!-- 筛选红包 -->
         <activity android:name="com.delevin.shenghuidai.activity.FilterRedPacketActivity" />
-        <activity android:name="com.pusupanshi.shenghuidai.wxapi.ShareActivity" >
+        <activity android:name="com.yourenkeji.shenghuidai.wxapi.ShareActivity" >
         </activity>
         <!-- 邀请记录 -->
         <activity android:name="com.delevin.shenghuidai.fragmentactivity.ShareYaoqingActivity" >
@@ -226,7 +226,7 @@
         <activity android:name="com.delevin.shenghuidai.activity.ReturnCalendarActivity" />
         <!-- 微信 -->
         <activity
-            android:name="com.delevin.shenghuidai.umeng.share.WXEntryActivity"
+            android:name="com.yourenkeji.shenghuidai.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -480,7 +480,7 @@
         <!-- 设置环信应用的appkey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="1196170512115293#boluolicai" />
+            android:value="1196170512115293#shenghuidai" />
         <!-- 声明sdk所需的service -->
         <service android:name="com.easemob.chat.EMChatService" />
 

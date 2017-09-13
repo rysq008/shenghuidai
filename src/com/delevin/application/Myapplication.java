@@ -1,7 +1,6 @@
 package com.delevin.application;
 
 import java.util.Map;
-import java.util.Set;
 
 import android.app.Application;
 import android.content.Context;
@@ -11,7 +10,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import cn.jpush.android.api.JPushInterface;
-import cn.jpush.android.api.TagAliasCallback;
 
 import com.delevin.shenghuidai.bean.BeanUrl;
 import com.delevin.shenghuidai.chat.utils.DemoHXSDKHelper;
@@ -22,50 +20,50 @@ import com.delevin.shenghuidai.utils.OkhttpManger;
 import com.easemob.EMCallBack;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 //import com.umeng.socialize.Config;
 //import com.umeng.socialize.PlatformConfig;
-import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.common.QueuedWork;
 
 /**
  *     @author 李红涛  @version 创建时间：2016-12-13 下午3:46:18    类说明 
  */
 public class Myapplication extends Application {
 
-	public static boolean reSetCode = false;// 是否设置密码
-	public static OkhttpManger okhttpManger;
-	public static String DEVICE_ID;// 设备Id
-	public static String INFORMATION;// 设备名称
-	public static String publicKey = AndroidUtils.HEXAndMd5("eb62f6b930");
-	public static LoginActivity loginActivity;
-	public static boolean Internet = true;
-	public static String registrationID = null;// 设备标识
+	public static boolean			reSetCode		= false;								// 是否设置密码
+	public static OkhttpManger		okhttpManger;
+	public static String			DEVICE_ID;												// 设备Id
+	public static String			INFORMATION;											// 设备名称
+	public static String			publicKey		= AndroidUtils.HEXAndMd5("eb62f6b930");
+	public static LoginActivity		loginActivity;
+	public static boolean			Internet		= true;
+	public static String			registrationID	= null;								// 设备标识
 
-	public static Context applicationContext;
-	private static Application instance;
+	public static Context			applicationContext;
+	private static Application		instance;
 	// login user name
-	public final String PREF_USERNAME = "username";
+	public final String				PREF_USERNAME	= "username";
 
 	/**
 	 * 当前用户nickname,为了苹果推送不是userid而是昵称
 	 */
-	public static String currentUserNick = "";
-	public static DemoHXSDKHelper hxSDKHelper = new DemoHXSDKHelper();
+	public static String			currentUserNick	= "";
+	public static DemoHXSDKHelper	hxSDKHelper		= new DemoHXSDKHelper();
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
+		// 开启debug模式，方便定位错误，具体错误检查方式可以查看http://dev.umeng.com/social/android/quick-integration的报错必看，正式发布，请关闭该模式
+		Config.DEBUG = true;
+		UMShareAPI.get(this);
+		Config.isJumptoAppStore = true;
+
 		okhttpManger = OkhttpManger.getInstance();
 		// 获得设备信息 以及设备唯一ID
 		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 		DEVICE_ID = tm.getDeviceId();
 		INFORMATION = Build.MODEL;
 
-		//开启debug模式，方便定位错误，具体错误检查方式可以查看http://dev.umeng.com/social/android/quick-integration的报错必看，正式发布，请关闭该模式
-        Config.DEBUG = true;
-        UMShareAPI.get(this);
-		Config.isJumptoAppStore = true;
-		
 		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志
 		JPushInterface.init(this); // 初始化 JPush
 
@@ -76,31 +74,13 @@ public class Myapplication extends Application {
 		instance = this;
 
 		BeanUrl.setHost(this, "");
-		/**
-		 * this function will initialize the HuanXin SDK
-		 * 
-		 * @return boolean true if caller can continue to call HuanXin related
-		 *         APIs after calling onInit, otherwise false.
-		 * 
-		 *         环信初始化SDK帮助函数
-		 *         返回true如果正确初始化，否则false，如果返回为false，请在后续的调用中不要调用任何和环信相关的代码
-		 * 
-		 *         for example: 例子：
-		 * 
-		 *         public class DemoHXSDKHelper extends HXSDKHelper
-		 * 
-		 *         HXHelper = new DemoHXSDKHelper();
-		 *         if(HXHelper.onInit(context)){ // do HuanXin related work }
-		 */
+
 		hxSDKHelper.onInit(applicationContext);
 
-		// 防止字体被从新设置
-		// DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-		// displayMetrics.scaledDensity = displayMetrics.density;
 	}
 
 	{
-		PlatformConfig.setWeixin("wxe94d0f3253c0fa2e", "0440904e1f163344948abf0e263dbb52");
+		PlatformConfig.setWeixin("wx718fb32713947fd7", "6bff432975ad666cf77a4924488b4140");
 		PlatformConfig.setQQZone("1106295785", "NlxPL3zXcGS4QVMe");
 	}
 
@@ -154,8 +134,7 @@ public class Myapplication extends Application {
 	}
 
 	/**
-	 * 设置密码 下面的实例代码 只是demo，实际的应用中需要加password 加密后存入 preference 环信sdk
-	 * 内部的自动登录需要的密码，已经加密存储了
+	 * 设置密码 下面的实例代码 只是demo，实际的应用中需要加password 加密后存入 preference 环信sdk 内部的自动登录需要的密码，已经加密存储了
 	 * 
 	 * @param pwd
 	 */
@@ -174,9 +153,9 @@ public class Myapplication extends Application {
 	// 防止字体被从新设置
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		if (newConfig.fontScale != 1)// 非默认值
-			// 防止字体被从新设置
-			getResources();
+		if (newConfig.fontScale != 1) // 非默认值
+		// 防止字体被从新设置
+		getResources();
 		super.onConfigurationChanged(newConfig);
 	}
 

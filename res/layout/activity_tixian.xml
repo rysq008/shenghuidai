@@ -73,7 +73,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="41dp"
+                        android:layout_height="35dp"
                         android:layout_marginTop="20dp"
                         android:background="#f9765b"
                         android:orientation="horizontal" >
@@ -136,7 +136,7 @@
                 <RelativeLayout
                     android:id="@+id/relativeLayout1"
                     android:layout_width="match_parent"
-                    android:layout_height="53dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
@@ -188,7 +188,7 @@
                 <RelativeLayout
                     android:id="@+id/relativeLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="53dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
@@ -226,7 +226,7 @@
                 <RelativeLayout
                     android:id="@+id/relativeLayout3"
                     android:layout_width="match_parent"
-                    android:layout_height="53dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/boluos_shape_common_view_stroke" >
@@ -259,7 +259,7 @@
                 <RelativeLayout
                     android:id="@id/relativeLayout1"
                     android:layout_width="match_parent"
-                    android:layout_height="53dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
@@ -296,7 +296,7 @@
                     android:layout_marginBottom="60dp"
                     android:layout_marginLeft="15dip"
                     android:layout_marginRight="15dip"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="35dp"
                     android:background="@drawable/boluo_button_shadow_red_background"
                     android:gravity="center"
                     android:text="下一步"
