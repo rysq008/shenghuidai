@@ -27,12 +27,10 @@ public class MeiTiAdapter extends MyBaseAdapter<BeanMeiTi> {
 		TextView title = holder.getView(R.id.meiTi_title);
 		TextView time = holder.getView(R.id.meiTi_posttime);
 		ImageView img = holder.getView(R.id.meiTi_img);
-		AndroidUtils.getImg(mContext, item.getImage(), img,
-				R.drawable.boluo_center, R.drawable.boluo_fail);
+		AndroidUtils.getImg(mContext, item.getImage(), img, R.drawable.boluo_center, R.drawable.boluo_fail);
 		time.setText(QntUtils.getYMD(item.getPosttime()));
 		title.setText(item.getTitle());
 	}
 
-	public void getData() {
-	}
+	public void getData() {}
 }

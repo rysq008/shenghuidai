@@ -37,8 +37,8 @@ import com.delevin.shenghuidai.bean.BeanUrl;
 import com.delevin.shenghuidai.interfaces.GengXinCallBack;
 import com.delevin.shenghuidai.utils.APPName;
 import com.delevin.shenghuidai.utils.BoluoUtils;
-import com.delevin.shenghuidai.utils.QntUtils;
 import com.delevin.shenghuidai.utils.OkhttpManger.Funck4;
+import com.delevin.shenghuidai.utils.QntUtils;
 import com.yourenkeji.shenghuidai.R;
 
 /**
@@ -49,44 +49,44 @@ import com.yourenkeji.shenghuidai.R;
 
 public class UpdateManager {
 
-	int versionCode = 0;
+	int							versionCode		= 0;
 	/* 下载中 */
-	private static final int DOWNLOAD = 1;
+	private static final int	DOWNLOAD		= 1;
 	/* 下载结束 */
-	private static final int DOWNLOAD_FINISH = 2;
+	private static final int	DOWNLOAD_FINISH	= 2;
 	/* 保存解析的XML信息 */
-	HashMap<String, String> mHashMap;
+	HashMap<String, String>		mHashMap;
 	/* 下载保存路径 */
-	private String mSavePath;
+	private String				mSavePath;
 	/* 记录进度条数量 */
-	private int progress;
+	private int					progress;
 	/* 是否取消更新 */
-	private boolean cancelUpdate = false;
-	private Context mContext;
+	private boolean				cancelUpdate	= false;
+	private Context				mContext;
 	/* 更新进度条 */
-	private ProgressBar mProgress;
-	private Dialog mDownloadDialog;
-	private InputStream instream;
-	private HttpURLConnection conn;
-	private CustomDialog dialog;
+	private ProgressBar			mProgress;
+	private Dialog				mDownloadDialog;
+	private InputStream			instream;
+	private HttpURLConnection	conn;
+	private CustomDialog		dialog;
 
-	private Handler mHandler = new Handler() {
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			// 正在下载
-			case DOWNLOAD:
-				// 设置进度条位置
-				mProgress.setProgress(progress);
-				break;
-			case DOWNLOAD_FINISH:
-				// 安装文件
-				installApk();
-				break;
-			default:
-				break;
-			}
-		};
-	};
+	private Handler				mHandler		= new Handler() {
+													public void handleMessage(Message msg) {
+														switch (msg.what) {
+														// 正在下载
+															case DOWNLOAD:
+																// 设置进度条位置
+																mProgress.setProgress(progress);
+																break;
+															case DOWNLOAD_FINISH:
+																// 安装文件
+																installApk();
+																break;
+															default:
+																break;
+														}
+													};
+												};
 
 	public UpdateManager(Context context) {
 		this.mContext = context;
@@ -111,83 +111,72 @@ public class UpdateManager {
 	}
 
 	// Android 最新版更新
-	public boolean getGengxinS(final Context context, final String b,
-			final GengXinCallBack callBack) {
+	public boolean getGengxinS(final Context context, final String b, final GengXinCallBack callBack) {
 		mHashMap = new HashMap<String, String>();
-		Myapplication.okhttpManger.sendComplexForm(context, false,
-				BeanUrl.GENGXINS_STRING, null, new Funck4() {
-					@Override
-					public void onResponse(JSONObject result) {
-						try {
-							int visonCode = APPName.getVersionCode(context);
-							JSONArray array = result.getJSONArray("data");
-							JSONObject object = array.getJSONObject(0);
-							String code = object.getString("code");
-							String constraint_code = object
-									.getString("constraint_code");
-							String constraint_status = object
-									.getString("constraint_status");
-							String content = object.getString("content");
-							String status = object.getString("status");
-							String url = object.getString("url");
-							String strSerivce = result.getString("serivce");
-							int codeI = QntUtils.getInt(code);
-							callBack.onSerivce(strSerivce);
+		Myapplication.okhttpManger.sendComplexForm(context, false, BeanUrl.GENGXINS_STRING, null, new Funck4() {
+			@Override
+			public void onResponse(JSONObject result) {
+				try {
+					int visonCode = APPName.getVersionCode(context);
+					JSONArray array = result.getJSONArray("data");
+					JSONObject object = array.getJSONObject(0);
+					String code = object.getString("code");
+					String constraint_code = object.getString("constraint_code");
+					String constraint_status = object.getString("constraint_status");
+					String content = object.getString("content");
+					String status = object.getString("status");
+					String url = object.getString("url");
+					String strSerivce = result.getString("serivce");
+					int codeI = QntUtils.getInt(code);
+					callBack.onSerivce(strSerivce);
 
-							if (TextUtils.equals(status, "1")) {
-								if (codeI > visonCode) {
-									mHashMap.put("code", code);
-									mHashMap.put("content", content);
-									mHashMap.put("is_forceupdate", status);
-									mHashMap.put("url", url);
-									callBack.onCode(code);
-									if (null != mHashMap) {
-										showNoticeDialog(mHashMap
-												.get("is_forceupdate"));
-									}
-								} else {
-									if (TextUtils.equals(b, "0")) {
-										Toast.makeText(mContext, "当前已是最新版本",
-												Toast.LENGTH_SHORT).show();
-									}
+					if (TextUtils.equals(status, "1")) {
+						if (codeI > visonCode) {
+							mHashMap.put("code", code);
+							mHashMap.put("content", content);
+							mHashMap.put("is_forceupdate", status);
+							mHashMap.put("url", url);
+							callBack.onCode(code);
+							if (null != mHashMap) {
+								showNoticeDialog(mHashMap.get("is_forceupdate"));
+							}
+						} else {
+							if (TextUtils.equals(b, "0")) {
+								Toast.makeText(mContext, "当前已是最新版本", Toast.LENGTH_SHORT).show();
+							}
+						}
+					} else {
+						if (TextUtils.equals(constraint_status, "1")) {
+							if (TextUtils.equals(constraint_code, visonCode + "")) {
+								// z
+								mHashMap.put("code", constraint_code);
+								mHashMap.put("content", content);
+								mHashMap.put("is_forceupdate", constraint_status);
+								mHashMap.put("url", url);
+								callBack.onCode(constraint_code);
+								if (null != mHashMap) {
+									showNoticeDialog("3");
 								}
 							} else {
-								if (TextUtils.equals(constraint_status, "1")) {
-									if (TextUtils.equals(constraint_code,
-											visonCode + "")) {
-										// z
-										mHashMap.put("code", constraint_code);
-										mHashMap.put("content", content);
-										mHashMap.put("is_forceupdate",
-												constraint_status);
-										mHashMap.put("url", url);
-										callBack.onCode(constraint_code);
-										if (null != mHashMap) {
-											showNoticeDialog("3");
-										}
-									} else {
-										// n
-										if (TextUtils.equals(b, "0")) {
-											Toast.makeText(mContext,
-													"当前已是最新版本",
-													Toast.LENGTH_SHORT).show();
-										}
-									}
-								} else {
-									// n
-									if (TextUtils.equals(b, "0")) {
-										Toast.makeText(mContext, "当前已是最新版本",
-												Toast.LENGTH_SHORT).show();
-									}
+								// n
+								if (TextUtils.equals(b, "0")) {
+									Toast.makeText(mContext, "当前已是最新版本", Toast.LENGTH_SHORT).show();
 								}
 							}
-
-						} catch (JSONException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+						} else {
+							// n
+							if (TextUtils.equals(b, "0")) {
+								Toast.makeText(mContext, "当前已是最新版本", Toast.LENGTH_SHORT).show();
+							}
 						}
 					}
-				});
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		return false;
 	}
 
@@ -203,18 +192,17 @@ public class UpdateManager {
 
 	/**
 	 * 显示软件更新对话框
+	 * 
+	 * @param leixing
+	 *            1：强制更新，否则为可选更新
 	 */
 	private void showNoticeDialog(String leixing) {
-		LayoutInflater inflater = (LayoutInflater) mContext
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		// 实例化自定义主题的对话框
-		final CustomDialog dialog = new CustomDialog(mContext,
-				R.style.gesturesPassword_dialog);
+		final CustomDialog dialog = new CustomDialog(mContext, R.style.gesturesPassword_dialog);
 		View layout = inflater.inflate(R.layout.view_layoutgeng, null);
-		dialog.addContentView(layout, new LayoutParams(
-				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		TextView gengMessage = (TextView) layout
-				.findViewById(R.id.gengxin_message);
+		dialog.addContentView(layout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		TextView gengMessage = (TextView) layout.findViewById(R.id.gengxin_message);
 		gengMessage.setText(mHashMap.get("content"));
 		// 构造对话框
 		Button bt_geng = (Button) layout.findViewById(R.id.bt_gengxin);
@@ -233,8 +221,7 @@ public class UpdateManager {
 				public void onClick(View v) {
 
 					dialog.dismiss();
-					SharedPreferences shareInit = BoluoUtils
-							.getShareInit(mContext);
+					SharedPreferences shareInit = BoluoUtils.getShareInit(mContext);
 					Editor editor = shareInit.edit();
 					editor.putBoolean("geng", false);
 					editor.commit();
@@ -252,28 +239,24 @@ public class UpdateManager {
 	 * 显示软件下载对话框
 	 */
 	private void showDownloadDialog() {
-		LayoutInflater inflater = (LayoutInflater) mContext
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		// 实例化自定义主题的对话框
 		dialog = new CustomDialog(mContext, R.style.gesturesPassword_dialog);
 		View v = inflater.inflate(R.layout.softupdate_progress, null);
-		dialog.addContentView(v, new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT));
+		dialog.addContentView(v, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		// 构造软件下载对话框
 		mProgress = (ProgressBar) v.findViewById(R.id.update_progress);
 		mProgress = (ProgressBar) v.findViewById(R.id.update_progress);
-		Button dilog_zhengzai_dissminss = (Button) v
-				.findViewById(R.id.dilog_zhengzai_dissminss);
-		dilog_zhengzai_dissminss
-				.setOnClickListener(new android.view.View.OnClickListener() {
+		Button dilog_zhengzai_dissminss = (Button) v.findViewById(R.id.dilog_zhengzai_dissminss);
+		dilog_zhengzai_dissminss.setOnClickListener(new android.view.View.OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						// 设置取消状态
-						cancelUpdate = true;
-						dialog.dismiss();
-					}
-				});
+			@Override
+			public void onClick(View v) {
+				// 设置取消状态
+				cancelUpdate = true;
+				dialog.dismiss();
+			}
+		});
 		// // 取消更新
 		// builder.setNegativeButton(R.string.soft_update_cancel, new
 		// OnClickListener(){
@@ -308,17 +291,14 @@ public class UpdateManager {
 		public void run() {
 			try {
 				// 判断SD卡是否存在，并且是否具有读写权限
-				if (Environment.getExternalStorageState().equals(
-						Environment.MEDIA_MOUNTED)) {
+				if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 					// 获得存储卡的路径
-					String sdpath = Environment.getExternalStorageDirectory()
-							+ "/";
+					String sdpath = Environment.getExternalStorageDirectory() + "/";
 					mSavePath = sdpath + "download";
 					String urls = mHashMap.get("url");
 					URL url = new URL(urls);
 					// 创建连接
-					HttpURLConnection conn = (HttpURLConnection) url
-							.openConnection();
+					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 					conn.connect();
 					// 获取文件大小
 					int length = conn.getContentLength();
@@ -330,8 +310,7 @@ public class UpdateManager {
 					if (!file.exists()) {
 						file.mkdir();
 					}
-					File apkFile = new File(mSavePath,
-							mHashMap.get("is_forceupdate"));
+					File apkFile = new File(mSavePath, mHashMap.get("is_forceupdate"));
 					FileOutputStream fos = new FileOutputStream(apkFile);
 					int count = 0;
 					// 缓存
@@ -370,13 +349,10 @@ public class UpdateManager {
 	 */
 	private void installApk() {
 		File apkfile = new File(mSavePath, mHashMap.get("is_forceupdate"));
-		if (!apkfile.exists()) {
-			return;
-		}
+		if (!apkfile.exists()) { return; }
 		// 通过Intent安装APK文件
 		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
-				"application/vnd.android.package-archive");
+		i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
 		mContext.startActivity(i);
 	}
 }

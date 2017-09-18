@@ -6,5 +6,6 @@ package com.delevin.shenghuidai.interfaces;
  */
 public interface GengXinCallBack {
 	void onCode(String code);
+
 	void onSerivce(String ser);
 }

@@ -16,10 +16,10 @@ import com.delevin.shenghuidai.bean.BeanNotice;
 import com.yourenkeji.shenghuidai.R;
 
 public class PublicNoticeView extends LinearLayout {
-	int i = 0;
-	private Context mContext;
-	private ViewFlipper mViewFlipper;
-	private View mScrollTitleView;
+	int					i	= 0;
+	private Context		mContext;
+	private ViewFlipper	mViewFlipper;
+	private View		mScrollTitleView;
 
 	public PublicNoticeView(Context context) {
 		super(context);
@@ -49,18 +49,13 @@ public class PublicNoticeView extends LinearLayout {
 	 */
 	@SuppressLint("InflateParams")
 	private void bindLinearLayout() {
-		mScrollTitleView = LayoutInflater.from(mContext).inflate(
-				R.layout.scrollnoticebar, null);
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+		mScrollTitleView = LayoutInflater.from(mContext).inflate(R.layout.scrollnoticebar, null);
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		addView(mScrollTitleView, params);
 
-		mViewFlipper = (ViewFlipper) mScrollTitleView
-				.findViewById(R.id.id_scrollNoticeTitle);
-		mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext,
-				R.anim.slide_in_bottom));
-		mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext,
-				R.anim.slide_out_top));
+		mViewFlipper = (ViewFlipper) mScrollTitleView.findViewById(R.id.id_scrollNoticeTitle);
+		mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_in_bottom));
+		mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_out_top));
 		mViewFlipper.startFlipping();
 
 	}
@@ -81,8 +76,7 @@ public class PublicNoticeView extends LinearLayout {
 			t1.setTextViewText(beanNotice.getTitle());
 			BeanConvert convert = new BeanConvert();
 			convert.setiString(i);
-			LayoutParams layoutParams = new LayoutParams(
-					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 			// layoutParams.gravity = Gravity.CENTER_VERTICAL;
 			// MyAplication.NoticeId = mViewFlipper.getId();
 			mViewFlipper.addView(t1, layoutParams);

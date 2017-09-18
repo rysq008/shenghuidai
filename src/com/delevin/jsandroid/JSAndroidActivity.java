@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -33,7 +34,6 @@ import com.delevin.shenghuidai.bean.BeanUrl;
 import com.delevin.shenghuidai.denglu.ZhuActivity;
 import com.delevin.shenghuidai.interfaces.ShareCallBack;
 import com.delevin.shenghuidai.main.MainActivity;
-import com.delevin.shenghuidai.utils.AndroidUtils;
 import com.delevin.shenghuidai.utils.BoluoUtils;
 import com.delevin.shenghuidai.utils.OkhttpManger.Funck4;
 import com.delevin.shenghuidai.utils.ProessDilogs;
@@ -321,10 +321,24 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 		public void OnRightButtonClick(View v) {
 			if (memberId != null) {
 				if (TextUtils.equals(right, "rightQ")) {
-					Intent qiandao = new Intent(JSAndroidActivity.this, WebActivity.class);
-					qiandao.putExtra("jsUrl", BeanUrl.URLZ + BeanUrl.QIANDAOGUIZE_STRING);
-					qiandao.putExtra("title", "签到规则");
-					startActivity(qiandao);
+					// Intent qiandao = new Intent(JSAndroidActivity.this, WebActivity.class);
+					// qiandao.putExtra("jsUrl", BeanUrl.URLZ + BeanUrl.QIANDAOGUIZE_STRING);
+					// qiandao.putExtra("title", "签到规则");
+					// startActivity(qiandao);
+					final Dialog dialog = new Dialog(JSAndroidActivity.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+					dialog.setContentView(R.layout.qiandao_dialog_layout);
+					dialog.findViewById(R.id.qiandao_dialog_img).setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							// TODO Auto-generated method stub
+							dialog.cancel();
+						}
+					});
+					dialog.setCancelable(true);
+					dialog.setCanceledOnTouchOutside(true);
+					dialog.show();
+
 				} else if (TextUtils.equals(right, "rightA")) {
 					String type = getIntent().getStringExtra("type");
 					ShareUtils.initShare(new ShareCallBack() {
@@ -363,7 +377,7 @@ public class JSAndroidActivity extends Activity implements OnClickListener {
 			}
 		}, JSAndroidActivity.this, "胜辉贷：安全、短期、稳健收益", "来胜辉贷，轻松享受短期、安全、高收益理财产品，现在体验还可以获赠50元新手红包。", BeanUrl.YAOQINGLIANJIE_STRING + invite_code, R.drawable.logo);
 
-		//获取分享二维码地址
+		// 获取分享二维码地址
 		final String phone = BoluoUtils.getShareOneData(this, "phone");
 		Myapplication.okhttpManger.sendComplexForm(this, false, QntUtils.getURL(BeanUrl.yaoqingMa, phone), null, new Funck4() {
 

@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res/com.yourenkeji.shenghuidai"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_application_transparent" >
+
+    <ImageView
+        android:id="@+id/qiandao_dialog_img"
+        android:layout_width="305dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/sign_in_rule"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+</RelativeLayout>

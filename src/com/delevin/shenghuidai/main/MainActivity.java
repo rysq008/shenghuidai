@@ -1,7 +1,6 @@
 package com.delevin.shenghuidai.main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +69,7 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 	@SuppressLint("InlinedApi")
 	@Override
 	protected void findViews() {
-
+		// StatusBarUtil.full(this, false);
 		setContentView(R.layout.activity_main);
 		mainActivity = this;
 		titleView = (TitleView) findViewById(R.id.titleView_main_activity);
@@ -222,16 +221,6 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 		}
 
 		listFragment = new ArrayList<Fragment>();
-		// 实例化 Fragment 集合
-		mFragments = new Fragment[4];
-
-		mFragments[0] = getSupportFragmentManager().findFragmentById(R.id.boluos_fragment_home);
-
-		mFragments[1] = getSupportFragmentManager().findFragmentById(R.id.boluos_fragment_touzi);
-
-		mFragments[2] = getSupportFragmentManager().findFragmentById(R.id.boluos_fragment_my);
-
-		mFragments[3] = getSupportFragmentManager().findFragmentById(R.id.boluos_fragment_faxian);
 
 		listFragment.add(new HomeFragment());
 		listFragment.add(new TouziFragment());
@@ -255,22 +244,7 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 		viewpage.setOnPageChangeListener(this);
 		viewpage.setOffscreenPageLimit(3);
 
-		// // 显示默认的Fragment
-		// getSupportFragmentManager().beginTransaction().hide(mFragments[0]).hide(mFragments[1]).hide(mFragments[2]).hide(mFragments[3]).show(mFragments[whichIsDefault]).commit();
-
 		viewpage.setCurrentItem(whichIsDefault);
-	}
-
-	public void showFragment(int which) {
-		if (which == 0) {
-			titleView.setVisibility(View.GONE);
-			StatusBarUtil.setColorFullScreenNoTitle(this);
-		} else {
-			titleView.setVisibility(View.VISIBLE);
-			StatusBarUtil.setPrimaryColor(this);
-		}
-		// getSupportFragmentManager().beginTransaction().hide(mFragments[0]).hide(mFragments[1]).hide(mFragments[2]).hide(mFragments[3]).show(mFragments[which]).commit();
-		viewpage.setCurrentItem(which);
 	}
 
 	@Override
@@ -280,46 +254,18 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 		// 主页
 			case R.id.boluos_bt_home:
 				viewpage.setCurrentItem(0);
-//				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(0);
-//				} else {
-//					showFragment(0);
-//					my_none.setVisibility(View.GONE);
-//				}
-//				titleView.setAppTitle("首页");
 				break;
 			// 我的投资显示
 			case R.id.boluos_bt_touzi:
 				viewpage.setCurrentItem(1);
-//				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(1);
-//				} else {
-//					showFragment(1);
-//					my_none.setVisibility(View.GONE);
-//				}
-//				titleView.setAppTitle("项目");
 				break;
 			// 我的账户显示
 			case R.id.boluos_bt_my:
 				viewpage.setCurrentItem(3);
-//				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(2);
-//				} else {
-//					showFragment(2);
-//					my_none.setVisibility(View.VISIBLE);
-//				}
-//				titleView.setAppTitle("账户");
 				break;
 			// 发现显示
 			case R.id.boluos_bt_faxian:
 				viewpage.setCurrentItem(2);
-//				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(3);
-//				} else {
-//					showFragment(3);
-//					my_none.setVisibility(View.VISIBLE);
-//				}
-//				titleView.setAppTitle("发现");
 				break;
 			case R.id.bt_dilog_login:
 				startActivity(new Intent(MainActivity.this, ZhuActivity.class));
@@ -351,17 +297,22 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 		if (arg0 == 0) {
 			titleView.setVisibility(View.GONE);
 			StatusBarUtil.setColorFullScreenNoTitle(this);
+			// StatusBarUtil.setShoworHideStatuBar(viewpage, true);
+			StatusBarUtil.full(this, false);
 		} else {
 			titleView.setVisibility(View.VISIBLE);
 			StatusBarUtil.setPrimaryColor(this);
+			// StatusBarUtil.setShoworHideStatuBar(viewpage, false);
+			StatusBarUtil.full(this, true);
 		}
+
 		((RadioButton) radioGroup.getChildAt(arg0)).setChecked(true);
 		switch (arg0) {
 			case 0:
 				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(0);
+					// showFragment(0);
 				} else {
-//					showFragment(0);
+					// showFragment(0);
 					my_none.setVisibility(View.GONE);
 				}
 				titleView.setAppTitle("首页");
@@ -369,9 +320,9 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 			// 我的投资显示
 			case 1:
 				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(1);
+					// showFragment(1);
 				} else {
-//					showFragment(1);
+					// showFragment(1);
 					my_none.setVisibility(View.GONE);
 				}
 				titleView.setAppTitle("项目");
@@ -379,9 +330,9 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 			// 发现显示
 			case 2:
 				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(3);
+					// showFragment(3);
 				} else {
-//					showFragment(3);
+					// showFragment(3);
 					my_none.setVisibility(View.VISIBLE);
 				}
 				titleView.setAppTitle("发现");
@@ -389,9 +340,9 @@ public class MainActivity extends BaseFragmentActivity implements OnClickListene
 			// 我的账户显示
 			case 3:
 				if (!BoluoUtils.isEmpty(memberId)) {
-//					showFragment(2);
+					// showFragment(2);
 				} else {
-//					showFragment(2);
+					// showFragment(2);
 					my_none.setVisibility(View.VISIBLE);
 				}
 				titleView.setAppTitle("账户");

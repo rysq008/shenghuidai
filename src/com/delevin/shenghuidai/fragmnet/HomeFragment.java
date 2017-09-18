@@ -61,34 +61,34 @@ import com.yourenkeji.shenghuidai.R;
  */
 
 public class HomeFragment extends BaseFragment implements OnPageChangeListener, OnClickListener {
-	private ViewPager viewPager; // banner viewpager 初始化
-	private LinearLayout viewGroup; // banner 底部切换点 初始化
-	private ArrayList<View> list; // banner 点 添加集合
-	private ImageView[] imageViews; // banner 存储点数组
-	private BannerAdapter adapters; // banner 切换图片适配器
-	private List<BeanBanner> bannersList; // banner 添加banner 图片uri
-	private List<BeanNotice> noticeList;// 公告
-	private List<BeanTJCP> newerList; // 新手专享
-	private List<BeanTJCP> tjcpList;// 推荐产品
-	private LinearLayout layout_xinshoubangzhu; // 新手帮助
-	private LinearLayout layout_anquanbaozhang; // 安全保障
-	private LinearLayout layout_guanyuwomen; // 关于我们
-	private LinearLayout layout_yaoqinghaoyou; // 邀请好友
-	private LinearLayout home_Layout_tjcp;
-	private PublicNoticeView noticeView;
-	private LinearLayout draweeView;// 新手红包点击
-	private String memberId;
-	private String phone;
-	private String apiToken;
-	private LinearLayout layoutNewerObject;
-	private String newReder;
-	private MaterialRefreshLayout pullToRefreshView;
-	private ImageView imgNew;
-	private TextView tvNew;
-	private LinearLayout layout_V;
-	private ImageView img_V;
-	private String strUserName;
-	private String token;
+	private ViewPager				viewPager;				// banner viewpager 初始化
+	private LinearLayout			viewGroup;				// banner 底部切换点 初始化
+	private ArrayList<View>			list;					// banner 点 添加集合
+	private ImageView[]				imageViews;			// banner 存储点数组
+	private BannerAdapter			adapters;				// banner 切换图片适配器
+	private List<BeanBanner>		bannersList;			// banner 添加banner 图片uri
+	private List<BeanNotice>		noticeList;			// 公告
+	private List<BeanTJCP>			newerList;				// 新手专享
+	private List<BeanTJCP>			tjcpList;				// 推荐产品
+	private TextView				layout_xinshoubangzhu;	// 新手帮助
+	private TextView				layout_anquanbaozhang;	// 安全保障
+	private TextView				layout_guanyuwomen;	// 关于我们
+	private TextView				layout_yaoqinghaoyou;	// 邀请好友
+	private LinearLayout			home_Layout_tjcp;
+	private PublicNoticeView		noticeView;
+	private LinearLayout			draweeView;			// 新手红包点击
+	private String					memberId;
+	private String					phone;
+	private String					apiToken;
+	private LinearLayout			layoutNewerObject;
+	private String					newReder;
+	private MaterialRefreshLayout	pullToRefreshView;
+	private ImageView				imgNew;
+	private TextView				tvNew;
+	private LinearLayout			layout_V;
+	private ImageView				img_V;
+	private String					strUserName;
+	private String					token;
 
 	@Override
 	protected View initView(LayoutInflater inflaters, ViewGroup container) {
@@ -171,10 +171,10 @@ public class HomeFragment extends BaseFragment implements OnPageChangeListener, 
 		FrameLayout.LayoutParams lp = (LayoutParams) viewPager.getLayoutParams();
 		lp.topMargin = -statusBarHeight;
 		viewPager.setLayoutParams(lp);
-		layout_xinshoubangzhu = (LinearLayout) view.findViewById(R.id.home_qiandaosongli);
-		layout_anquanbaozhang = (LinearLayout) view.findViewById(R.id.home_xinshoubidu);
-		layout_guanyuwomen = (LinearLayout) view.findViewById(R.id.home_guanyuwomen);
-		layout_yaoqinghaoyou = (LinearLayout) view.findViewById(R.id.home_yaoqinghaoyou);
+		layout_xinshoubangzhu = (TextView) view.findViewById(R.id.home_qiandaosongli);
+		layout_anquanbaozhang = (TextView) view.findViewById(R.id.home_xinshoubidu);
+		layout_guanyuwomen = (TextView) view.findViewById(R.id.home_guanyuwomen);
+		layout_yaoqinghaoyou = (TextView) view.findViewById(R.id.home_yaoqinghaoyou);
 		draweeView = (LinearLayout) view.findViewById(R.id.home_paihongbao);
 		draweeView.setOnClickListener(this);
 		layout_guanyuwomen.setOnClickListener(this);
@@ -314,31 +314,29 @@ public class HomeFragment extends BaseFragment implements OnPageChangeListener, 
 	 * 实现循环播放功能
 	 */
 	@SuppressLint("HandlerLeak")
-	private Handler mHandlers = new Handler() {
+	private Handler	mHandlers	= new Handler() {
 
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			switch (msg.what) {
-			case 1:
-				int totalCount = list.size();
-				int currentItem = viewPager.getCurrentItem();
-				int toItem = currentItem + 1 == totalCount ? 0 : currentItem + 1;
-				viewPager.setCurrentItem(toItem, true);
-				// 每两秒钟发送一个message，用于切换viewPager中的图片
-				this.sendEmptyMessageDelayed(1, 4000);
-				break;
-			}
-		}
-	};
-
-	@Override
-	public void onPageScrollStateChanged(int arg0) {
-	}
+									@Override
+									public void handleMessage(Message msg) {
+										super.handleMessage(msg);
+										switch (msg.what) {
+											case 1:
+												int totalCount = list.size();
+												int currentItem = viewPager.getCurrentItem();
+												int toItem = currentItem + 1 == totalCount ? 0 : currentItem + 1;
+												viewPager.setCurrentItem(toItem, true);
+												// 每两秒钟发送一个message，用于切换viewPager中的图片
+												this.sendEmptyMessageDelayed(1, 4000);
+												break;
+										}
+									}
+								};
 
 	@Override
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
-	}
+	public void onPageScrollStateChanged(int arg0) {}
+
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {}
 
 	@Override
 	public void onPageSelected(int arg0) {
@@ -430,139 +428,139 @@ public class HomeFragment extends BaseFragment implements OnPageChangeListener, 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.home_more_object:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				Intent intentMore = new Intent(getActivity(), TouziMoreObjectActivity.class);
-				intentMore.putExtra("type", "1");
-				startActivity(intentMore);
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		case R.id.home_moreNew_object:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				Intent intentMoreNew = new Intent(getActivity(), TouziMoreObjectActivity.class);
-				intentMoreNew.putExtra("type", "0");
-				startActivity(intentMoreNew);
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		case R.id.home_qiandaosongli:// 签到送礼
-			// case R.id.home_xinshoubangzhu:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				Intent qiandao = new Intent(getActivity(), JSAndroidActivity.class);
-				qiandao.putExtra("jsUrl", BeanUrl.MeiriQiandao + "?phone=" + (TextUtils.isEmpty(phone) ? "" : phone) + "&" + "token=" + (TextUtils.isEmpty(token) ? "" : token));
-				qiandao.putExtra("title", "每日签到");
-				qiandao.putExtra("type", "3");
-				qiandao.putExtra("right", "rightQ");
-				startActivity(qiandao);
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		case R.id.home_xinshoubidu:// 新手必读
-			// case R.id.home_anquanbaozhang:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				Intent intentSafe = new Intent(getActivity(), JSAndroidActivity.class);
-				intentSafe.putExtra("jsUrl", /* BeanUrl.SAFE_STRING */
-						BeanUrl.HostUrl.XINSHOUBIDU_HOST);
-				intentSafe.putExtra("title", "新手指引");
-				intentSafe.putExtra("js", "js");
-				startActivity(intentSafe);
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		// 公告
-		case R.id.home_notice:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				ViewFlipper viewFlipper = noticeView.getViewFlipper();
-				View currentView = viewFlipper.getCurrentView();
-				int id = currentView.getId();
-				Intent intentNotice = new Intent();
-				// intentNotice.putExtra("title", "公告");
-				// intentNotice.putExtra("jsUrl", noticeList.get(id).getUrl());
-				// intentNotice.putExtra("js", "js");
-				intentNotice.setClass(getActivity(), NoticeListActivity.class);
-				startActivity(intentNotice);
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		// 新手标投资
-		case R.id.home_newer_object:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				// if (!BoluoUtils.isEmpty(memberId)) {
-				Intent intentNewer = new Intent(getActivity(), BidDetalsActivity.class);
-				intentNewer.putExtra("bidId", newerList.get(0).getId());
-				intentNewer.putExtra("status", newerList.get(0).getProduct_status());
-				intentNewer.putExtra("isNewer", true);
-				intentNewer.putExtra("data", newerList.get(0));
-				startActivity(intentNewer);
-				// }else {
-				// startActivity(new Intent(getActivity(),ZhuActivity.class));
+			case R.id.home_more_object:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					Intent intentMore = new Intent(getActivity(), TouziMoreObjectActivity.class);
+					intentMore.putExtra("type", "1");
+					startActivity(intentMore);
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			case R.id.home_moreNew_object:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					Intent intentMoreNew = new Intent(getActivity(), TouziMoreObjectActivity.class);
+					intentMoreNew.putExtra("type", "0");
+					startActivity(intentMoreNew);
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			case R.id.home_qiandaosongli:// 签到送礼
+				// case R.id.home_xinshoubangzhu:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					Intent qiandao = new Intent(getActivity(), JSAndroidActivity.class);
+					qiandao.putExtra("jsUrl", BeanUrl.MeiriQiandao + "?phone=" + (TextUtils.isEmpty(phone) ? "" : phone) + "&" + "token=" + (TextUtils.isEmpty(token) ? "" : token));
+					qiandao.putExtra("title", "每日签到");
+					qiandao.putExtra("type", "3");
+					qiandao.putExtra("right", "rightQ");
+					startActivity(qiandao);
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			case R.id.home_xinshoubidu:// 新手必读
+				// case R.id.home_anquanbaozhang:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					Intent intentSafe = new Intent(getActivity(), JSAndroidActivity.class);
+					intentSafe.putExtra("jsUrl", /* BeanUrl.SAFE_STRING */
+							BeanUrl.HostUrl.XINSHOUBIDU_HOST);
+					intentSafe.putExtra("title", "新手指引");
+					intentSafe.putExtra("js", "js");
+					startActivity(intentSafe);
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			// 公告
+			case R.id.home_notice:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					ViewFlipper viewFlipper = noticeView.getViewFlipper();
+					View currentView = viewFlipper.getCurrentView();
+					int id = currentView.getId();
+					Intent intentNotice = new Intent();
+					// intentNotice.putExtra("title", "公告");
+					// intentNotice.putExtra("jsUrl", noticeList.get(id).getUrl());
+					// intentNotice.putExtra("js", "js");
+					intentNotice.setClass(getActivity(), NoticeListActivity.class);
+					startActivity(intentNotice);
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			// 新手标投资
+			case R.id.home_newer_object:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					// if (!BoluoUtils.isEmpty(memberId)) {
+					Intent intentNewer = new Intent(getActivity(), BidDetalsActivity.class);
+					intentNewer.putExtra("bidId", newerList.get(0).getId());
+					intentNewer.putExtra("status", newerList.get(0).getProduct_status());
+					intentNewer.putExtra("isNewer", true);
+					intentNewer.putExtra("data", newerList.get(0));
+					startActivity(intentNewer);
+					// }else {
+					// startActivity(new Intent(getActivity(),ZhuActivity.class));
+					// }
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			case R.id.home_more_meiti:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					startActivity(new Intent(getActivity(), TouziMeiTiActivity.class));
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			case R.id.home_paihongbao:// 派红包
+				Intent intent = new Intent(getActivity(), JSAndroidActivity.class);
+				intent.putExtra("title", "胜辉贷");
+				intent.putExtra("js", "js");
+				intent.putExtra("jsUrl", BeanUrl.HostUrl.PAIHONGBAO_HOST);
+				// if (memberId != null) {
+				//
+				// intent.putExtra("jsUrl", newReder + "?islogin=1");
+				// } else {
+				// intent.putExtra("jsUrl", newReder + "?islogin=0");
 				// }
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		case R.id.home_more_meiti:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				startActivity(new Intent(getActivity(), TouziMeiTiActivity.class));
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		case R.id.home_paihongbao:// 派红包
-			Intent intent = new Intent(getActivity(), JSAndroidActivity.class);
-			intent.putExtra("title", "胜辉贷");
-			intent.putExtra("js", "js");
-			intent.putExtra("jsUrl", BeanUrl.HostUrl.PAIHONGBAO_HOST);
-			// if (memberId != null) {
-			//
-			// intent.putExtra("jsUrl", newReder + "?islogin=1");
-			// } else {
-			// intent.putExtra("jsUrl", newReder + "?islogin=0");
-			// }
-			startActivity(intent);
-			break;
-		case R.id.home_pilou:
-		case R.id.home_guanyuwomen:// 投资攻略
-			// startActivity(new Intent(getActivity(),PdfActivity.class));
-			Intent intentPi = new Intent(getActivity(), JSAndroidActivity.class);
-			intentPi.putExtra("title", "投资攻略");
-			intentPi.putExtra("jsUrl", BeanUrl.HostUrl.TOUZIGONGLUE_HOST);
-			intentPi.putExtra("js", "js");
-			startActivity(intentPi);
-			break;
-		case R.id.home_yaoqinghaoyou:
-			// case R.id.open_share:
-			if (NetUtils.getNetWorkState(getActivity()) != -1) {
-				Intent intent1 = new Intent(getActivity(), JSAndroidActivity.class);
-				intent1.putExtra("title", "邀请好友");
-				intent1.putExtra("jsUrl", String.format(BeanUrl.YAOQINHAOYOU_STRING, TextUtils.isEmpty(phone) ? "" : phone, TextUtils.isEmpty(token) ? "" : token));
-				startActivity(intent1);
-			} else {
-				BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
-			}
-			break;
-		case R.id.home_paihangbang:
-			Intent intentBang = new Intent(getActivity(), JSAndroidActivity.class);
-			intentBang.putExtra("title", "投资排行榜");
-			intentBang.putExtra("jsUrl", BeanUrl.PAIHANGBANG_STRING);
-			startActivity(intentBang);
-			break;
-		case R.id.home_kefu:
-			if (true) {
-				Intent it = new Intent(getActivity(), HelpCenterActivity.class);
-				it.putExtra("username", strUserName);
-				startActivity(it);
-				return;
-			}
-			break;
-		default:
-			break;
+				startActivity(intent);
+				break;
+			case R.id.home_pilou:
+			case R.id.home_guanyuwomen:// 投资攻略
+				// startActivity(new Intent(getActivity(),PdfActivity.class));
+				Intent intentPi = new Intent(getActivity(), JSAndroidActivity.class);
+				intentPi.putExtra("title", "投资攻略");
+				intentPi.putExtra("jsUrl", BeanUrl.HostUrl.TOUZIGONGLUE_HOST);
+				intentPi.putExtra("js", "js");
+				startActivity(intentPi);
+				break;
+			case R.id.home_yaoqinghaoyou:
+				// case R.id.open_share:
+				if (NetUtils.getNetWorkState(getActivity()) != -1) {
+					Intent intent1 = new Intent(getActivity(), JSAndroidActivity.class);
+					intent1.putExtra("title", "邀请好友");
+					intent1.putExtra("jsUrl", String.format(BeanUrl.YAOQINHAOYOU_STRING, TextUtils.isEmpty(phone) ? "" : phone, TextUtils.isEmpty(token) ? "" : token));
+					startActivity(intent1);
+				} else {
+					BoluoUtils.getDilogDome(getActivity(), "温馨提示", "您当前的网络不可用", "确定");
+				}
+				break;
+			case R.id.home_paihangbang:
+				Intent intentBang = new Intent(getActivity(), JSAndroidActivity.class);
+				intentBang.putExtra("title", "投资排行榜");
+				intentBang.putExtra("jsUrl", BeanUrl.PAIHANGBANG_STRING);
+				startActivity(intentBang);
+				break;
+			case R.id.home_kefu:
+				if (true) {
+					Intent it = new Intent(getActivity(), HelpCenterActivity.class);
+					it.putExtra("username", strUserName);
+					startActivity(it);
+					return;
+				}
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -577,6 +575,6 @@ public class HomeFragment extends BaseFragment implements OnPageChangeListener, 
 	public void onResume() {
 		super.onResume();
 		// activity启动两秒钟后，发送一个message，用来将viewPager中的图片切换到下一个
-		mHandlers.sendEmptyMessageDelayed(1, 2000);
+		mHandlers.sendEmptyMessageDelayed(1, 4000);
 	}
 }

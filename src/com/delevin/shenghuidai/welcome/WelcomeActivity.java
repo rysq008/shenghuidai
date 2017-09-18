@@ -3,27 +3,21 @@ package com.delevin.shenghuidai.welcome;
 import java.util.Map;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 import cn.jpush.android.api.JPushInterface;
 
 import com.delevin.application.Myapplication;
 import com.delevin.shenghuidai.base.activity.BaseActivity;
-import com.delevin.shenghuidai.bean.BeanUrl;
 import com.delevin.shenghuidai.gestureedit.GestureEditActivity;
 import com.delevin.shenghuidai.gestureedit.GestureVerifyActivity;
 import com.delevin.shenghuidai.main.MainActivity;
@@ -36,14 +30,14 @@ import com.yourenkeji.shenghuidai.R;
  *     @author 李红涛  @version 创建时间：2016-12-15 下午5:09:43    类说明 
  */
 public class WelcomeActivity extends BaseActivity {
-	private SharedPreferences preferences;
-	private Boolean isFirstIn;
-	Handler handler;
-	Runnable runnable;
-	private CountDownProgress gProgress;
-	private android.content.SharedPreferences.Editor editor;
-	private String memberId;
-	public static boolean isForeground = false;
+	private SharedPreferences							preferences;
+	private Boolean										isFirstIn;
+	Handler												handler;
+	Runnable											runnable;
+	private CountDownProgress							gProgress;
+	private android.content.SharedPreferences.Editor	editor;
+	private String										memberId;
+	public static boolean								isForeground	= false;
 
 	@Override
 	protected void onDestroy() {
@@ -141,26 +135,21 @@ public class WelcomeActivity extends BaseActivity {
 			editor = preferences.edit();
 			editor.putBoolean("isFirstIn", false); // isFirstIn
 			editor.commit();
-			startActivity(new Intent(WelcomeActivity.this,
-					SHDGuideActivity.class)); // 第一次在安装运行
+			startActivity(new Intent(WelcomeActivity.this, SHDGuideActivity.class)); // 第一次在安装运行
 			WelcomeActivity.this.finish();
 		} else {
 			if (memberId != null) {
-				SharedPreferences shareDate = getSharedPreferences(
-						"is_set_pwd", 0);
+				SharedPreferences shareDate = getSharedPreferences("is_set_pwd", 0);
 				boolean is_pwd = shareDate.getBoolean("is_pwd", false);
 				if (is_pwd) {
-					startActivity(new Intent(WelcomeActivity.this,
-							GestureVerifyActivity.class));
+					startActivity(new Intent(WelcomeActivity.this, GestureVerifyActivity.class));
 					WelcomeActivity.this.finish();
 				} else {
-					startActivity(new Intent(WelcomeActivity.this,
-							GestureEditActivity.class)); // 不是第一次安装运行
+					startActivity(new Intent(WelcomeActivity.this, GestureEditActivity.class)); // 不是第一次安装运行
 					WelcomeActivity.this.finish();
 				}
 			} else {
-				startActivity(new Intent(WelcomeActivity.this,
-						MainActivity.class));
+				startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
 				WelcomeActivity.this.finish();
 			}
 		}

@@ -626,7 +626,7 @@ public class MessageAdapter extends BaseAdapter{
 				// "!!!! not back receive, show image directly");
 				holder.pb.setVisibility(View.GONE);
 				holder.tv.setVisibility(View.GONE);
-				holder.iv.setImageResource(R.drawable.ic_launcher);
+				holder.iv.setImageResource(R.drawable.logo);
 				ImageMessageBody imgBody = (ImageMessageBody) message.getBody();
 				if (imgBody.getLocalUrl() != null) {
 					// String filePath = imgBody.getLocalUrl();

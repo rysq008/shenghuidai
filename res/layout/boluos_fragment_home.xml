@@ -26,7 +26,7 @@
                     <android.support.v4.view.ViewPager
                         android:id="@+id/home_banner_viewPager"
                         android:layout_width="match_parent"
-                        android:layout_height="210dp" />
+                        android:layout_height="230dp" />
 
                     <LinearLayout
                         android:id="@+id/home_banner_group"
@@ -54,79 +54,28 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="91dp"
                     android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:paddingBottom="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="20dp" >
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
 
-                    <LinearLayout
+                    <TextView
                         android:id="@+id/home_guanyuwomen"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
+                        style="@style/faxianTabItemStyle"
+                        android:drawableTop="@drawable/boluo_aboutus"
+                        android:text="投资攻略" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/boluo_aboutus" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:text="投资攻略"
-                            android:textColor="@color/wwwwww"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
                         android:id="@+id/home_xinshoubidu"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
+                        style="@style/faxianTabItemStyle"
+                        android:drawableTop="@drawable/boluos_instructions"
+                        android:text="新手指引" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/boluos_instructions" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:text="新手指引"
-                            android:textColor="@color/wwwwww"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
                         android:id="@+id/home_yaoqinghaoyou"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/faxian_invite" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:text="去邀请好友"
-                            android:textColor="@color/wwwwww"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                        style="@style/faxianTabItemStyle"
+                        android:drawableTop="@drawable/faxian_invite"
+                        android:text="去邀请好友" />
 
                     <LinearLayout
                         android:id="@+id/home_paihongbao"
@@ -145,33 +94,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
+                            android:layout_marginTop="10dp"
                             android:text="派红包"
                             android:textColor="@color/wwwwww"
                             android:textSize="12sp" />
                     </LinearLayout>
 
-                    <LinearLayout
+                    <TextView
                         android:id="@+id/home_qiandaosongli"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical" >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/faxian_qiandao" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:text="每日签到"
-                            android:textColor="@color/wwwwww"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                        style="@style/faxianTabItemStyle"
+                        android:drawableTop="@drawable/faxian_qiandao"
+                        android:text="每日签到" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -409,10 +342,10 @@
                     android:paddingRight="15dp" >
 
                     <TextView
-                        android:layout_marginTop="41dp"
                         android:id="@+id/boluos_tv_tip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="41dp"
                         android:text="问题帮助中心"
                         android:textColor="@color/f15a4a"
                         android:textSize="15sp" />
@@ -427,10 +360,10 @@
                         android:textSize="13sp" />
 
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/qa_help_center" />
                 </RelativeLayout>
 

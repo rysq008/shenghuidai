@@ -25,32 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone" >
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/helplogin"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:lineSpacingMultiplier="1.5"
-                    android:text="@string/www_boluo_com"
-                    android:textColor="@color/base_application_lite_grey_font"
-                    android:textSize="12sp"
-                    android:visibility="visible" />
-            </LinearLayout>
-
             <TextView
                 android:id="@+id/more_icon_tv"
                 android:layout_width="wrap_content"

@@ -60,10 +60,10 @@ public class UserUtils {
     public static void setServersAvatar(Context context, String username, ImageView imageView){
         User user = getUserInfo(username);
         if(user != null){
-        	Glide.with(context).load(user.getAvatar()).placeholder(R.drawable.boluo).into(imageView);
+        	Glide.with(context).load(user.getAvatar()).placeholder(R.drawable.img_kefu).into(imageView);
 //            Picasso.with(context).load("https://m.boluolc.com/upload/images/banner_dir/app_banner_jianguan.jpg").into(imageView);
         }else{
-        	Glide.with(context).load(R.drawable.boluo).into(imageView);
+        	Glide.with(context).load(R.drawable.img_kefu).into(imageView);
 //            Picasso.with(context).load("").into(imageView);
         }
     }

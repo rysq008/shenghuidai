@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,6 +33,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.delevin.application.Myapplication;
 import com.delevin.shenghuidai.bean.BeanUrl;
 import com.delevin.shenghuidai.denglu.ZhuActivity;
@@ -177,15 +180,19 @@ public class AndroidUtils {
 
 	public static void getImg(final Context context, final String url, final ImageView imageView, final int place, final int error) {
 		imageView.post(new Runnable() {
+			@SuppressWarnings("unchecked")
 			public void run() {
 				// TODO Auto-generated method stub
 				final int w = imageView.getWidth();
 				final int h = imageView.getHeight();
 				if (w > 0 && h > 0) {
-					Glide.with(context.getApplicationContext()) // safer!
-							.load(url).placeholder(place).error(error)
-							.centerCrop()
-							.into(imageView);
+					Glide.with(context).load(url).asBitmap().into(new SimpleTarget<Bitmap>(w, h) {
+						@Override
+						public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+							Bitmap bmp = ImageUtils.zoomImg(resource, w, h);
+							imageView.setImageBitmap(bmp);
+						}
+					});
 				}
 			}
 		});
@@ -195,13 +202,10 @@ public class AndroidUtils {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		// 实例化自定义主题的对话框
-		CustomDialog dialog = new CustomDialog(context,
-				R.style.gesturesPassword_dialog);
+		CustomDialog dialog = new CustomDialog(context, R.style.gesturesPassword_dialog);
 		View layout = inflater.inflate(R.layout.layout_dilog_login, null);
-		dialog.addContentView(layout, new LayoutParams(
-				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		TextView dilogReger = (TextView) layout
-				.findViewById(R.id.bt_dilog_resger);
+		dialog.addContentView(layout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		TextView dilogReger = (TextView) layout.findViewById(R.id.bt_dilog_resger);
 		Button dilogLgin = (Button) layout.findViewById(R.id.bt_dilog_login);
 		dilogLgin.setOnClickListener(new OnClickListener() {
 
@@ -228,8 +232,7 @@ public class AndroidUtils {
 		Class<TelephonyManager> c = TelephonyManager.class;
 		Method getITelephonyMethod = null;
 		try {
-			getITelephonyMethod = c.getDeclaredMethod("getITelephony",
-					(Class[]) null);
+			getITelephonyMethod = c.getDeclaredMethod("getITelephony", (Class[]) null);
 			getITelephonyMethod.setAccessible(true);
 		} catch (SecurityException e) {
 			e.printStackTrace();
@@ -238,13 +241,10 @@ public class AndroidUtils {
 		}
 
 		try {
-			TelephonyManager tManager = (TelephonyManager) context
-					.getSystemService(Context.TELEPHONY_SERVICE);
+			TelephonyManager tManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 			Object iTelephony;
-			iTelephony = (Object) getITelephonyMethod.invoke(tManager,
-					(Object[]) null);
-			Method dial = iTelephony.getClass().getDeclaredMethod("dial",
-					String.class);
+			iTelephony = (Object) getITelephonyMethod.invoke(tManager, (Object[]) null);
+			Method dial = iTelephony.getClass().getDeclaredMethod("dial", String.class);
 			dial.invoke(iTelephony, number);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();

@@ -8,15 +8,18 @@ import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.yourenkeji.shenghuidai.R;
 
+@SuppressLint("NewApi")
 public class StatusBarUtil {
 
-	private static final int FAKE_STATUS_BAR_VIEW_ID = R.id.statusbarutil_fake_status_bar_view;
-	private static final int DEFAULT_ALPHA = 0;
+	private static final int	FAKE_STATUS_BAR_VIEW_ID	= R.id.statusbarutil_fake_status_bar_view;
+	private static final int	DEFAULT_ALPHA			= 0;
 
 	/**
 	 * 设置状态栏颜色
@@ -28,29 +31,29 @@ public class StatusBarUtil {
 	 * @param statusBarAlpha
 	 *            状态栏透明度
 	 */
-	public static void setColor(Activity activity, int color,
-			int statusBarAlpha, boolean needShowStatusBar) {
+	public static void setColor(Activity activity, int color, int statusBarAlpha, boolean needShowStatusBar) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			activity.getWindow().addFlags(
-					WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+			// View decorView = getWindow().getDecorView();
+			// int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+			// | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+			// decorView.setSystemUiVisibility(option);
+			// getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+			activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			if (needShowStatusBar) {
-				ViewGroup decorView = (ViewGroup) activity.getWindow()
-						.getDecorView();// 同下句等效
+				ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();// 同下句等效
 				// ViewGroup decorView = (ViewGroup) activity
 				// .findViewById(android.R.id.content);
-				View fakeStatusBarView = decorView
-						.findViewById(FAKE_STATUS_BAR_VIEW_ID);
+				View fakeStatusBarView = decorView.findViewById(FAKE_STATUS_BAR_VIEW_ID);
 				if (fakeStatusBarView != null) {
 					if (fakeStatusBarView.getVisibility() == View.GONE) {
 						fakeStatusBarView.setVisibility(View.GONE);
 					}
-					fakeStatusBarView.setBackgroundColor(calculateStatusColor(
-							color, statusBarAlpha));
+					fakeStatusBarView.setBackgroundColor(calculateStatusColor(color, statusBarAlpha));
 				} else {
-					View view = createStatusBarView(activity, color,
-							statusBarAlpha);
-					LinearLayout linearlayout = (LinearLayout) decorView
-							.getChildAt(0);
+					View view = createStatusBarView(activity, color, statusBarAlpha);
+					LinearLayout linearlayout = (LinearLayout) decorView.getChildAt(0);
 					linearlayout.addView(view, 0);
 					// decorView.addView(view);
 				}
@@ -59,6 +62,38 @@ public class StatusBarUtil {
 				hideFakeStatusBarView(activity);
 			}
 		}
+	}
+
+	/**
+	 * 动态隐藏状态栏
+	 * 
+	 * @param context
+	 * @param enable
+	 *            true：隐藏 ，false：显示
+	 */
+	public static void full(Activity context, boolean enable) {
+		if (enable) {
+			WindowManager.LayoutParams lp = context.getWindow().getAttributes();
+			lp.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+			context.getWindow().setAttributes(lp);
+			context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+		} else {
+			WindowManager.LayoutParams attr = context.getWindow().getAttributes();
+			attr.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			context.getWindow().setAttributes(attr);
+			context.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+		}
+	}
+
+	@SuppressLint("NewApi")
+	public static void setShoworHideStatuBar(View rootView, boolean showStatusBar) {
+
+		if (showStatusBar) {
+			rootView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+		} else {
+			rootView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+		}
+
 	}
 
 	/**
@@ -93,8 +128,7 @@ public class StatusBarUtil {
 	 */
 	public static void hideFakeStatusBarView(Activity activity) {
 		ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
-		View fakeStatusBarView = decorView
-				.findViewById(FAKE_STATUS_BAR_VIEW_ID);
+		View fakeStatusBarView = decorView.findViewById(FAKE_STATUS_BAR_VIEW_ID);
 		if (fakeStatusBarView != null) {
 			fakeStatusBarView.setVisibility(View.GONE);
 		}
@@ -105,12 +139,10 @@ public class StatusBarUtil {
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	public static void clearPreviousSetting(Activity activity) {
 		ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
-		View fakeStatusBarView = decorView
-				.findViewById(FAKE_STATUS_BAR_VIEW_ID);
+		View fakeStatusBarView = decorView.findViewById(FAKE_STATUS_BAR_VIEW_ID);
 		if (fakeStatusBarView != null) {
 			decorView.removeView(fakeStatusBarView);
-			ViewGroup rootView = (ViewGroup) ((ViewGroup) activity
-					.findViewById(android.R.id.content)).getChildAt(0);
+			ViewGroup rootView = (ViewGroup) ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);
 			rootView.setPadding(0, 0, 0, 0);
 		}
 	}
@@ -139,14 +171,12 @@ public class StatusBarUtil {
 	 *            透明值
 	 * @return 状态栏矩形条
 	 */
-	public static View createStatusBarView(Activity activity, int color,
-			int alpha) {
+	public static View createStatusBarView(Activity activity, int color, int alpha) {
 		// 绘制一个和状态栏一样高的矩形
 		View statusBarView = new View(activity);
 		int default_status_bar_height = getStatusBarHeight(activity);
 		// default_status_bar_height = DisplayUtil.dip2px(activity, 20);
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				ViewGroup.LayoutParams.MATCH_PARENT, default_status_bar_height);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, default_status_bar_height);
 		statusBarView.setLayoutParams(params);
 		statusBarView.setBackgroundColor(calculateStatusColor(color, alpha));
 		statusBarView.setId(FAKE_STATUS_BAR_VIEW_ID);
@@ -158,8 +188,34 @@ public class StatusBarUtil {
 	 */
 	@SuppressLint("NewApi")
 	public static void setRootView(Activity activity) {
-		ViewGroup parent = (ViewGroup) activity
-				.findViewById(android.R.id.content);
+		Window window = activity.getWindow();
+		ViewGroup mContentView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
+
+		// 首先使 ChildView 不预留空间
+		View mChildView = mContentView.getChildAt(0);
+		if (mChildView != null) {
+			// ViewCompat.setFitsSystemWindows(mChildView, false);
+			mChildView.setFitsSystemWindows(false);
+		}
+
+		int statusBarHeight = getStatusBarHeight(activity);
+		// 需要设置这个 flag 才能设置状态栏
+		window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		// 避免多次调用该方法时,多次移除了 View
+		if (mChildView != null && mChildView.getLayoutParams() != null && mChildView.getLayoutParams().height == statusBarHeight) {
+			// 移除假的 View.
+			mContentView.removeView(mChildView);
+			mChildView = mContentView.getChildAt(0);
+		}
+		if (mChildView != null) {
+			FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mChildView.getLayoutParams();
+			// 清除 ChildView 的 marginTop 属性
+			if (lp != null && lp.topMargin >= statusBarHeight) {
+				lp.topMargin -= statusBarHeight;
+				mChildView.setLayoutParams(lp);
+			}
+		}
+		ViewGroup parent = (ViewGroup) activity.findViewById(android.R.id.content);
 		for (int i = 0, count = parent.getChildCount(); i < count; i++) {
 			View childView = parent.getChildAt(i);
 			if (childView instanceof ViewGroup) {
@@ -193,9 +249,7 @@ public class StatusBarUtil {
 	 * @return 最终的状态栏颜色
 	 */
 	public static int calculateStatusColor(int color, int alpha) {
-		if (alpha == 0) {
-			return color;
-		}
+		if (alpha == 0) { return color; }
 		float a = 1 - alpha / 255f;
 		int red = color >> 16 & 0xff;
 		int green = color >> 8 & 0xff;

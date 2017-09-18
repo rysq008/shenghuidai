@@ -19,7 +19,7 @@
             android:id="@+id/logo"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/boluolc_logo"
+			android:src="@drawable/logo"
 			android:layout_gravity="center_horizontal"
         	android:paddingLeft="40dip"
         	android:paddingRight="40dip"

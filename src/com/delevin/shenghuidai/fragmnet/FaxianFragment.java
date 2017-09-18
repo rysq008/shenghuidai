@@ -310,7 +310,8 @@ public class FaxianFragment extends BaseFragment implements OnClickListener, OnI
 				break;
 			case R.id.faxian_xydzp_iv:
 				Intent intent_xydzp = new Intent(getActivity(), JSAndroidActivity.class);
-				intent_xydzp.putExtra("jsUrl", String.format(BeanUrl.HostUrl.DAZHUANPAN_HOST_FMT_1, phone));
+				// intent_xydzp.putExtra("jsUrl", String.format(BeanUrl.HostUrl.DAZHUANPAN_HOST_FMT_1, phone));
+				intent_xydzp.putExtra("jsUrl", BeanUrl.HostUrl.DAZHUANPAN_FAXIAN_HOST);
 				intent_xydzp.putExtra("title", "幸运大转盘");
 				intent_xydzp.putExtra("js", "js");
 				startActivity(intent_xydzp);

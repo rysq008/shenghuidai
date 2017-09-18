@@ -64,12 +64,12 @@ public class PayOrTianSuccessActivity extends BaseActivity implements OnClickLis
 				payortixianMessage.setText(R.string.binding_card_success);
 			}else{
 				titleView.setAppTitle("充值成功");
-				payortixianTitle.setText("您已充值 ");
+				payortixianTitle.setText("您已充值成功 ");
 				payortixianMessage.setText(R.string.recharge_success);
 			}
 		} else {
 			titleView.setAppTitle("提现成功");
-			payortixianTitle.setText("您已提现 ");
+			payortixianTitle.setText("您已提现成功 ");
 			payortixianMessage.setText(R.string.withdraw_success);
 		}
 //		payortixianMoney.setText(money);

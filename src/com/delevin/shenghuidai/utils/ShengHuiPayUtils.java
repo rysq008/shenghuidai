@@ -91,7 +91,7 @@ public class ShengHuiPayUtils {
 			// private String pwd;
 			@Override
 			public void onPwd(String pwd) {
-				Toast.makeText(context, pwd, 1).show();
+//				Toast.makeText(context, pwd, 1).show();
 				Map<String, String> params = new HashMap<String, String>();
 				params.put("passwd", pwd);
 				Myapplication.okhttpManger.sendComplexForm(context, true, String.format(BeanUrl.BANKCHONGZHIMIMA_STRING, phone), params, new Funck4() {

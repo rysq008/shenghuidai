@@ -42,7 +42,8 @@
                             android:paddingLeft="15dp"
                             android:text="普通用户"
                             android:textColor="#ccffffff"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/my_time"
@@ -196,7 +197,7 @@
                         android:id="@+id/my_return_tv"
                         style="@style/my_touzi_grid_item"
                         android:drawableLeft="@drawable/my_return_caleandar"
-                        android:text="待收明细" />
+                        android:text="回款日历" />
                 </LinearLayout>
 
                 <LinearLayout

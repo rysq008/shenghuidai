@@ -49,8 +49,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:text="您已提现 "
-                android:textSize="15sp" />
+                android:text="您已提现成功"
+                android:textColor="@color/base_application_deep_grey_font"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/payortixian_money"
@@ -68,7 +69,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:text="元"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -81,7 +82,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:hint="提现可能会有延迟,如果长时间未到账,请致电客服热线 :"
-            android:textSize="17sp" />
+            android:textColor="@color/base_application_lite_grey_font"
+            android:textSize="13sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -97,8 +99,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:text="400-009-8087"
+                android:textColor="@color/base_application_deep_grey_font"
                 android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
